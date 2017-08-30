@@ -1,0 +1,3 @@
+app_identifier "cc.clv.ios.Sapphire"
+apple_id ENV['APPLE_ACCOUNT_ID']
+team_id ENV['APPLE_TEAM_ID']

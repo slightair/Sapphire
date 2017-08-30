@@ -1,0 +1,44 @@
+default_platform :ios
+
+desc "Setup for development"
+lane :setup do
+  cocoapods
+end
+
+desc "Apply code formatter"
+lane :format do
+  sh "cd ../; swiftformat Sapphire"
+end
+
+platform :ios do
+  desc "Submit a new Beta Build to DeployGate"
+  lane :beta do
+    cocoapods
+
+    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+
+    gym(
+        scheme: 'Sapphire',
+        export_method: 'ad-hoc',
+        xcargs: "DEVELOPMENT_TEAM=#{team_id} PROVISIONING_PROFILE_SPECIFIER=\"Sapphire AdHoc\""
+    )
+    deploygate(
+        api_token: ENV['DEPLOYGATE_API_KEY'],
+        user: ENV['DEPLOYGATE_USER'],
+        message: "Build #{last_git_commit[:abbreviated_commit_hash]}",
+    )
+
+    slack(
+        message: "Successfully deployed new App Update."
+    )
+  end
+
+  error do |lane, exception|
+    if lane == :beta
+      slack(
+          message: exception.message,
+          success: false
+      )
+    end
+  end
+end
