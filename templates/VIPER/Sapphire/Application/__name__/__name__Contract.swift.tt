@@ -1,0 +1,15 @@
+import Foundation
+import RxSwift
+import RxCocoa
+
+protocol <%= name %>ViewProtocol: class {
+}
+
+protocol <%= name %>PresenterProtocol: class {
+}
+
+protocol <%= name %>InteractorProtocol: class {
+}
+
+protocol <%= name %>WireframeProtocol: class {
+}

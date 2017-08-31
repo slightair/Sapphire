@@ -1,0 +1,14 @@
+import UIKit
+
+struct <%= name %>ViewBuilder {
+    static func build() -> UIViewController {
+        let viewController = <%= name %>ViewController()
+        let interactor = <%= name %>Interactor()
+        let wireframe = <%= name %>Wireframe(viewController: viewController)
+        let presenter = <%= name %>Presenter(view: viewController, interactor: interactor, wireframe: wireframe)
+
+        viewController.inject(presenter: presenter)
+
+        return viewController
+    }
+}

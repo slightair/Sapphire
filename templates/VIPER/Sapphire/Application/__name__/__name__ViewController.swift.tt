@@ -1,0 +1,19 @@
+import UIKit
+import RxSwift
+import RxCocoa
+
+final class <%= name %>ViewController: UIViewController, <%= name %>ViewProtocol {
+    private var presenter: <%= name %>PresenterProtocol!
+
+    private let disposeBag = DisposeBag()
+
+    func inject(presenter: <%= name %>PresenterProtocol) {
+        self.presenter = presenter
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Insert code here to connect presenter
+    }
+}
