@@ -15,6 +15,7 @@
 		5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */; };
 		5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DE1F55A9CA0032B5A6 /* LaunchScreen.storyboard */; };
 		57FE6C131F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */; };
+		57FE6C161F59F33C0014C623 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C151F59F33C0014C623 /* Appearance.swift */; };
 		7D3C376CDAFCB0B640BE55D8 /* BalancesContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FDF73D6A4A328522CD6A55 /* BalancesContract.swift */; };
 		8BE04E211CEDA0C932F8186F /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D310C9FB763FF84D736D5F4 /* BalancesViewController.swift */; };
 		A0FCD90B542A0361AB457DC5 /* BalancesWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */; };
@@ -33,6 +34,7 @@
 		5790D3DF1F55A9CA0032B5A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5790D3E11F55A9CA0032B5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerControllerBuilder.swift; sourceTree = "<group>"; };
+		57FE6C151F59F33C0014C623 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesWireframe.swift; sourceTree = "<group>"; };
 		66B935D34C468742ABBD1D6E /* BalancesInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesInteractor.swift; sourceTree = "<group>"; };
 		69FDF73D6A4A328522CD6A55 /* BalancesContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesContract.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5790D3D51F55A9CA0032B5A6 /* AppDelegate.swift */,
+				57FE6C151F59F33C0014C623 /* Appearance.swift */,
 				5790D3D91F55A9CA0032B5A6 /* Main.storyboard */,
 				5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */,
 				5790D3DE1F55A9CA0032B5A6 /* LaunchScreen.storyboard */,
@@ -287,6 +290,7 @@
 				7D3C376CDAFCB0B640BE55D8 /* BalancesContract.swift in Sources */,
 				12E547A085B258433E0ACBF6 /* BalancesInteractor.swift in Sources */,
 				57FE6C131F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift in Sources */,
+				57FE6C161F59F33C0014C623 /* Appearance.swift in Sources */,
 				B57DD8390D77644AA85D791B /* BalancesPresenter.swift in Sources */,
 				F3EA0E33A12A7D2851558ECF /* BalancesViewBuilder.swift in Sources */,
 				8BE04E211CEDA0C932F8186F /* BalancesViewController.swift in Sources */,
