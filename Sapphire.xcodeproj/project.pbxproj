@@ -133,6 +133,7 @@
 			buildConfigurationList = 5790D3E41F55A9CA0032B5A6 /* Build configuration list for PBXNativeTarget "Sapphire" */;
 			buildPhases = (
 				909DEC01F7B263AA86B5F229 /* [CP] Check Pods Manifest.lock */,
+				57FE6C141F59F2490014C623 /* SwiftLint */,
 				5790D3CE1F55A9C90032B5A6 /* Sources */,
 				5790D3CF1F55A9C90032B5A6 /* Frameworks */,
 				5790D3D01F55A9C90032B5A6 /* Resources */,
@@ -209,6 +210,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		57FE6C141F59F2490014C623 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		909DEC01F7B263AA86B5F229 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
