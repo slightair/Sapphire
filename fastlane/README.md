@@ -39,6 +39,11 @@ Setup for development
 fastlane format
 ```
 Apply code formatter
+### update_api_configuration
+```
+fastlane update_api_configuration
+```
+Update API Configuration
 
 ----
 
