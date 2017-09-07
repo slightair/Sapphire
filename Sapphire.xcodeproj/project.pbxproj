@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		12E547A085B258433E0ACBF6 /* BalancesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B935D34C468742ABBD1D6E /* BalancesInteractor.swift */; };
 		56FA7B8F60F550267103802E /* Pods_Sapphire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */; };
+		572664871F61861800692521 /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572664851F61861800692521 /* BalanceCell.swift */; };
+		572664881F61861800692521 /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572664861F61861800692521 /* BalanceCell.xib */; };
+		5726648B1F61889E00692521 /* BalancesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726648A1F61889E00692521 /* BalancesUseCase.swift */; };
+		5726648D1F6188C900692521 /* BittrexRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726648C1F6188C900692521 /* BittrexRepository.swift */; };
+		5726648F1F618AFD00692521 /* BalanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726648E1F618AFD00692521 /* BalanceData.swift */; };
 		573A1C831F5D93D7007523EB /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A1C821F5D93D7007523EB /* Balance.swift */; };
 		573A1C851F5D97AB007523EB /* DecodableDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A1C841F5D97AB007523EB /* DecodableDataParser.swift */; };
 		573A1C861F5EED72007523EB /* Session+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C1B1F5D835B0014C623 /* Session+Debug.swift */; };
@@ -18,6 +23,7 @@
 		5790D3DB1F55A9CA0032B5A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3D91F55A9CA0032B5A6 /* Main.storyboard */; };
 		5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */; };
 		5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DE1F55A9CA0032B5A6 /* LaunchScreen.storyboard */; };
+		5798FC721F619431005555BE /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798FC711F619431005555BE /* UITableView+Extensions.swift */; };
 		57FE6C131F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */; };
 		57FE6C161F59F33C0014C623 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C151F59F33C0014C623 /* Appearance.swift */; };
 		57FE6C1D1F5D838E0014C623 /* BittrexDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C1C1F5D838E0014C623 /* BittrexDataStore.swift */; };
@@ -35,6 +41,11 @@
 /* Begin PBXFileReference section */
 		081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapphire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E62B4AC3B00C089F7CBF662 /* Pods-Sapphire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapphire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire.debug.xcconfig"; sourceTree = "<group>"; };
+		572664851F61861800692521 /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
+		572664861F61861800692521 /* BalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceCell.xib; sourceTree = "<group>"; };
+		5726648A1F61889E00692521 /* BalancesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesUseCase.swift; sourceTree = "<group>"; };
+		5726648C1F6188C900692521 /* BittrexRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BittrexRepository.swift; sourceTree = "<group>"; };
+		5726648E1F618AFD00692521 /* BalanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceData.swift; sourceTree = "<group>"; };
 		573A1C821F5D93D7007523EB /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		573A1C841F5D97AB007523EB /* DecodableDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDataParser.swift; sourceTree = "<group>"; };
 		5790D3D21F55A9CA0032B5A6 /* Sapphire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapphire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +55,7 @@
 		5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5790D3DF1F55A9CA0032B5A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5790D3E11F55A9CA0032B5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5798FC711F619431005555BE /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerControllerBuilder.swift; sourceTree = "<group>"; };
 		57FE6C151F59F33C0014C623 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		57FE6C1A1F5D835B0014C623 /* Session+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
@@ -84,6 +96,8 @@
 				E9806E019FC489411046AEA3 /* BalancesViewBuilder.swift */,
 				7D310C9FB763FF84D736D5F4 /* BalancesViewController.swift */,
 				64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */,
+				572664851F61861800692521 /* BalanceCell.swift */,
+				572664861F61861800692521 /* BalanceCell.xib */,
 			);
 			path = Balances;
 			sourceTree = "<group>";
@@ -102,9 +116,19 @@
 			children = (
 				5790D3D71F55A9CA0032B5A6 /* StartupViewController.swift */,
 				57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */,
+				5798FC711F619431005555BE /* UITableView+Extensions.swift */,
 				0A856123B4529D00866F7EE3 /* Balances */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		572664891F61885600692521 /* Balances */ = {
+			isa = PBXGroup;
+			children = (
+				5726648A1F61889E00692521 /* BalancesUseCase.swift */,
+				5726648E1F618AFD00692521 /* BalanceData.swift */,
+			);
+			path = Balances;
 			sourceTree = "<group>";
 		};
 		573A1C811F5D93C4007523EB /* Entity */ = {
@@ -163,6 +187,8 @@
 		57FE6C181F5D80B50014C623 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				572664891F61885600692521 /* Balances */,
+				5726648C1F6188C900692521 /* BittrexRepository.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -262,6 +288,7 @@
 			files = (
 				5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */,
 				5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */,
+				572664881F61861800692521 /* BalanceCell.xib in Resources */,
 				5790D3DB1F55A9CA0032B5A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,10 +352,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 			);
@@ -336,10 +365,12 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 			);
@@ -355,11 +386,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5726648F1F618AFD00692521 /* BalanceData.swift in Sources */,
+				5726648D1F6188C900692521 /* BittrexRepository.swift in Sources */,
 				573A1C861F5EED72007523EB /* Session+Debug.swift in Sources */,
+				5798FC721F619431005555BE /* UITableView+Extensions.swift in Sources */,
 				5790D3D81F55A9CA0032B5A6 /* StartupViewController.swift in Sources */,
+				572664871F61861800692521 /* BalanceCell.swift in Sources */,
 				573A1C851F5D97AB007523EB /* DecodableDataParser.swift in Sources */,
 				5790D3D61F55A9CA0032B5A6 /* AppDelegate.swift in Sources */,
 				573A1C871F5EED76007523EB /* Session+Rx.swift in Sources */,
+				5726648B1F61889E00692521 /* BalancesUseCase.swift in Sources */,
 				57FE6C241F5D8A3A0014C623 /* CurrentBalancesRequest.swift in Sources */,
 				57FE6C211F5D84800014C623 /* WebAPI.swift in Sources */,
 				57FE6C1D1F5D838E0014C623 /* BittrexDataStore.swift in Sources */,

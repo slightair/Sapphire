@@ -7,13 +7,29 @@ final class BalancesPresenter: BalancesPresenterProtocol {
     private let interactor: BalancesInteractorProtocol
     private let wireframe: BalancesWireframeProtocol
 
-    private let disposeBag = DisposeBag()
+    private(set) var balanceData: Driver<[BalanceData]> = .empty()
+
+    private let errorSubject = PublishSubject<Error>()
+    var errors: Driver<Error> {
+        return errorSubject.asDriver(onErrorRecover: { _ in .never() })
+    }
 
     init(view: BalancesViewProtocol, interactor: BalancesInteractorProtocol, wireframe: BalancesWireframeProtocol) {
         self.view = view
         self.interactor = interactor
         self.wireframe = wireframe
 
-        // Insert code here for presenter logic
+        balanceData = view.refreshTrigger.asObservable()
+            .flatMapFirst { [weak self] _ -> Observable<BalanceData> in
+                interactor.fetchBalanceData()
+                    .asObservable()
+                    .catchError { error in
+                        self?.errorSubject.onNext(error)
+                        return .empty()
+                    }
+            }
+            .map { [$0] }
+            .asDriver(onErrorJustReturn: [])
+            .startWith([])
     }
 }
