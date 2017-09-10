@@ -8,6 +8,7 @@ class BalanceCell: UITableViewCell {
     @IBOutlet weak var currencyBalanceLabel: UILabel!
 
     func update(balance: Balance) {
+        thumbnailImageView.image = UIImage(named: balance.currency)
         currencyNameLabel.text = balance.currency
         currencyBalanceLabel.text = String(describing: balance.balance)
     }
