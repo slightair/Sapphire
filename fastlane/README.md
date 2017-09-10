@@ -39,6 +39,11 @@ Setup for development
 fastlane format
 ```
 Apply code formatter
+### make_app_icon
+```
+fastlane make_app_icon
+```
+Make app icons
 ### update_api_configuration
 ```
 fastlane update_api_configuration

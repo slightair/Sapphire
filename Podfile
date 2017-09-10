@@ -14,14 +14,20 @@ target 'Sapphire' do
   pod 'Eureka', git: 'https://github.com/xmartlabs/Eureka', branch: 'feature/Xcode9-Swift4'
 
   post_install do |installer|
-      swift3_pods = %w(FontAwesome.swift Whisper RxSwift RxCocoa RxDataSources)
+    swift3_pods = %w(FontAwesome.swift Whisper RxSwift RxCocoa RxDataSources)
 
-      installer.pods_project.targets.each do |target|
-          if swift3_pods.include?(target.name)
-              target.build_configurations.each do |config|
-                  config.build_settings['SWIFT_VERSION'] = '3.2'
-              end
-          end
+    installer.pods_project.targets.each do |target|
+      if swift3_pods.include?(target.name)
+        target.build_configurations.each do |config|
+          config.build_settings['SWIFT_VERSION'] = '3.2'
+        end
       end
+
+      target.build_configurations.each do |config|
+        config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+        config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+        config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+      end
+    end
   end
 end

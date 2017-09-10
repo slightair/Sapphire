@@ -10,6 +10,15 @@ lane :format do
   sh "cd ../; swiftformat Sapphire"
 end
 
+desc "Make app icons"
+lane :make_app_icon do
+  appicon(
+      appicon_image_file: 'fastlane/Sapphire.png',
+      appicon_devices: %i(iphone ipad),
+      appicon_path: 'Sapphire/Assets.xcassets'
+  )
+end
+
 desc "Update API Configuration"
 lane :update_api_configuration do
   coincheck_access_key = ENV['COINCHECK_ACCESS_KEY']
@@ -47,6 +56,11 @@ platform :ios do
     gym(
         scheme: 'Sapphire',
         export_method: 'ad-hoc',
+        export_options: {
+            provisioningProfiles: {
+                "cc.clv.ios.Sapphire" => "Sapphire AdHoc",
+            }
+        },
         xcargs: "DEVELOPMENT_TEAM=#{team_id} PROVISIONING_PROFILE_SPECIFIER=\"Sapphire AdHoc\""
     )
     deploygate(
