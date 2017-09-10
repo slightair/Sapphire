@@ -1,0 +1,3 @@
+images/*.svg
+out/svg/*.svg
+out/png/*.png
