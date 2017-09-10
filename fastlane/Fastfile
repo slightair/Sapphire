@@ -53,6 +53,7 @@ platform :ios do
 
     team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
 
+    update_api_configuration
     gym(
         scheme: 'Sapphire',
         export_method: 'ad-hoc',
