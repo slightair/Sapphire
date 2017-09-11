@@ -34,6 +34,22 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
         }
             .filter { $0.balance > 0 }
             .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue}
-        return BalanceData(date: Date(), items: infoList)
+
+        let usdtBTCPrice: Double
+        if let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" }) {
+            usdtBTCPrice = usdtBTCMarket.last
+        } else {
+            usdtBTCPrice = 0
+        }
+
+        let btcAssets: Double = Double(infoList.reduce(0) { r, c in r + c.estimatedBTCValue }) / Double(Bitcoin.satoshi)
+        let usdtAssets: Double = btcAssets * usdtBTCPrice
+
+        return BalanceData(
+            date: Date(),
+            usdtAssets: usdtAssets,
+            btcAssets: btcAssets,
+            items: infoList
+        )
     }
 }

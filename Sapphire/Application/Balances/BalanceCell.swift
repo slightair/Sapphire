@@ -11,7 +11,7 @@ class BalanceCell: UITableViewCell {
     func update(currencyInfo: BalanceData.CurrencyInfo) {
         thumbnailImageView.image = UIImage(named: currencyInfo.name)
         currencyNameLabel.text = currencyInfo.longName
-        currencyBalanceLabel.text = NumberFormatter.defaultCurrencyNumberFormatter.string(from: NSNumber(value: currencyInfo.balance))
-        estimatedBTCValueLabel.text = NumberFormatter.decimalNumberFormatter.string(from: NSNumber(value: currencyInfo.estimatedBTCValue))
+        currencyBalanceLabel.text = NumberFormatter.currency.string(from: NSNumber(value: currencyInfo.balance))
+        estimatedBTCValueLabel.text = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.estimatedBTCValue))
     }
 }

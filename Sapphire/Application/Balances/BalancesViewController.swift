@@ -64,6 +64,15 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
             return cell
         }
 
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            let data = dataSource.sectionModels[index]
+            let dateString = DateFormatter.default.string(from: data.date)
+            let usdtAssets = NumberFormatter.currency.string(from: NSNumber(value: data.usdtAssets)) ?? ""
+            let btcAssets = NumberFormatter.currency.string(from: NSNumber(value: data.btcAssets)) ?? ""
+
+            return "\(dateString) - \(btcAssets) / $\(usdtAssets)"
+        }
+
         presenter.balanceData
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)

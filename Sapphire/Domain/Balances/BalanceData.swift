@@ -10,6 +10,8 @@ struct BalanceData {
     }
 
     var date: Date
+    var usdtAssets: Double
+    var btcAssets: Double
     var items: [CurrencyInfo]
 }
 

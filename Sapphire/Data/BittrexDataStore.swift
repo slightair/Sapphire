@@ -11,7 +11,7 @@ protocol BittrexDataStoreProtocol {
 final class BittrexDataStore: BittrexDataStoreProtocol {
     static let shared = BittrexDataStore()
 
-    let session = Session.verbose //shared
+    let session = Session.shared
     var currencies: [Currency]?
 
     func fetchCurrentBalances() -> PrimitiveSequence<SingleTrait, [Balance]> {
