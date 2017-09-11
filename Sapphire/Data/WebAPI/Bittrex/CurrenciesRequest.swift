@@ -1,9 +1,12 @@
-//
-//  CurrenciesRequest.swift
-//  Sapphire
-//
-//  Created by slightair on 9/11/17.
-//  Copyright © 2017 slightair. All rights reserved.
-//
-
 import Foundation
+import APIKit
+
+extension BittrexAPI {
+    struct CurrenciesRequest: BittrexAPIRequest {
+        typealias Response = [Currency]
+
+        let apiType: BittrexAPI.APIType = .public
+        let method: HTTPMethod = .get
+        let path: String = "/v1.1/public/getcurrencies"
+    }
+}

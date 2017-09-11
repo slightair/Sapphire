@@ -4,6 +4,7 @@ import RxDataSources
 struct BalanceData {
     struct CurrencyInfo {
         let name: String
+        let longName: String
         let balance: Double
         let estimatedBTCValue: Int64
     }

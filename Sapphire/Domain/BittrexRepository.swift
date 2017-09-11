@@ -4,6 +4,7 @@ import RxSwift
 protocol BittrexRepositoryProtocol {
     func fetchCurrentBalances() -> Single<[Balance]>
     func fetchCurrentMarketSummaries() -> Single<[MarketSummary]>
+    func fetchCurrencies() -> Single<[Currency]>
 }
 
 struct BittrexRepository: BittrexRepositoryProtocol {
@@ -15,5 +16,9 @@ struct BittrexRepository: BittrexRepositoryProtocol {
 
     func fetchCurrentMarketSummaries() -> Single<[MarketSummary]> {
         return dataStore.fetchCurrentMarketSummaries()
+    }
+
+    func fetchCurrencies() -> Single<[Currency]> {
+        return dataStore.fetchCurrencies()
     }
 }

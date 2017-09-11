@@ -11,11 +11,12 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
     func fetchCurrentBalanceData() -> Single<BalanceData> {
         return Single.zip(
             bittrexRepository.fetchCurrentBalances(),
-            bittrexRepository.fetchCurrentMarketSummaries()
+            bittrexRepository.fetchCurrentMarketSummaries(),
+            bittrexRepository.fetchCurrencies()
         ).map(BalancesUseCase.translate)
     }
 
-    static func translate(balances: [Balance], marketSummaries: [MarketSummary]) -> BalanceData {
+    static func translate(balances: [Balance], marketSummaries: [MarketSummary], currencies: [Currency]) -> BalanceData {
         let infoList: [BalanceData.CurrencyInfo] = balances.map { balance in
             let estimatedBTCValue: Int64
             if balance.currency == "BTC" {
@@ -28,7 +29,8 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                     estimatedBTCValue = 0
                 }
             }
-            return BalanceData.CurrencyInfo(name: balance.currency, balance: balance.balance, estimatedBTCValue: estimatedBTCValue)
+            let longName = currencies.first(where: { $0.currency == balance.currency })?.currencyLong ?? balance.currency
+            return BalanceData.CurrencyInfo(name: balance.currency, longName: longName, balance: balance.balance, estimatedBTCValue: estimatedBTCValue)
         }
             .filter { $0.balance > 0 }
             .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue}
