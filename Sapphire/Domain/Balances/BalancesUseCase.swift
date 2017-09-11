@@ -17,26 +17,50 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
     }
 
     static func translate(balances: [Balance], marketSummaries: [MarketSummary], currencies: [Currency]) -> BalanceData {
-        let infoList: [BalanceData.CurrencyInfo] = balances.map { balance in
+        let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" })
+
+        var infoList: [BalanceData.CurrencyInfo] = balances.map { balance in
             let estimatedBTCValue: Int64
+            var last: Int64?
+            var high: Int64?
+            var low: Int64?
+            var change: Double?
+
             if balance.currency == "BTC" {
                 estimatedBTCValue = Int64(balance.balance * Bitcoin.satoshi)
+                if let marketSummary = usdtBTCMarket {
+                    last = Int64(marketSummary.last)
+                    high = Int64(marketSummary.high)
+                    low = Int64(marketSummary.low)
+                    change = (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
+                }
             } else {
                 let marketName = "BTC-\(balance.currency)"
                 if let marketSummary = marketSummaries.first(where: { $0.marketName == marketName }) {
                     estimatedBTCValue = Int64(balance.balance * marketSummary.last * Bitcoin.satoshi)
+                    last = Int64(marketSummary.last * Bitcoin.satoshi)
+                    high = Int64(marketSummary.high * Bitcoin.satoshi)
+                    low = Int64(marketSummary.low * Bitcoin.satoshi)
+                    change = (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
                 } else {
                     estimatedBTCValue = 0
                 }
             }
             let longName = currencies.first(where: { $0.currency == balance.currency })?.currencyLong ?? balance.currency
-            return BalanceData.CurrencyInfo(name: balance.currency, longName: longName, balance: balance.balance, estimatedBTCValue: estimatedBTCValue)
+            return BalanceData.CurrencyInfo(name: balance.currency,
+                                            longName: longName,
+                                            balance: balance.balance,
+                                            last: last,
+                                            high: high,
+                                            low: low,
+                                            change: change,
+                                            estimatedBTCValue: estimatedBTCValue)
         }
             .filter { $0.balance > 0 }
-            .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue}
+            .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue }
 
         let usdtBTCPrice: Double
-        if let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" }) {
+        if let usdtBTCMarket = usdtBTCMarket {
             usdtBTCPrice = usdtBTCMarket.last
         } else {
             usdtBTCPrice = 0
@@ -44,6 +68,11 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
 
         let btcAssets: Double = Double(infoList.reduce(0) { r, c in r + c.estimatedBTCValue }) / Double(Bitcoin.satoshi)
         let usdtAssets: Double = btcAssets * usdtBTCPrice
+
+        if let btcIndex = infoList.index(where: { $0.name == "BTC" }) {
+            let btcInfo = infoList.remove(at: btcIndex)
+            infoList.insert(btcInfo, at: 0)
+        }
 
         return BalanceData(
             date: Date(),

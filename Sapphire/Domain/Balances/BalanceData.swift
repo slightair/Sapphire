@@ -6,6 +6,10 @@ struct BalanceData {
         let name: String
         let longName: String
         let balance: Double
+        let last: Int64?
+        let high: Int64?
+        let low: Int64?
+        let change: Double?
         let estimatedBTCValue: Int64
     }
 

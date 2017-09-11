@@ -21,4 +21,14 @@ extension NumberFormatter {
         formatter.roundingMode = .halfUp
         return formatter
     }()
+
+    static let percent: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        formatter.maximumFractionDigits = 2
+        formatter.roundingMode = .halfUp
+        return formatter
+    }()
 }
