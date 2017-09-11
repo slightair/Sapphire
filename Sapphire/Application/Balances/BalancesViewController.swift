@@ -58,9 +58,9 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { _, tableView, indexPath, balance in
+        dataSource.configureCell = { _, tableView, indexPath, currencyInfo in
             let cell: BalanceCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.update(balance: balance)
+            cell.update(currencyInfo: currencyInfo)
             return cell
         }
 
