@@ -17,6 +17,8 @@ struct BalanceData {
     var usdtAssets: Double
     var btcAssets: Double
     var items: [CurrencyInfo]
+
+    static let empty = BalanceData(date: .distantPast, usdtAssets: 0, btcAssets: 0, items: [])
 }
 
 extension BalanceData: SectionModelType {

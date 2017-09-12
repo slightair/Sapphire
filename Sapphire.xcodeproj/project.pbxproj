@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E547A085B258433E0ACBF6 /* BalancesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B935D34C468742ABBD1D6E /* BalancesInteractor.swift */; };
+		554B6FE60A86B01DB859A8E9 /* AssetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00138DA59B7835FEE20BACA2 /* AssetsPresenter.swift */; };
 		56FA7B8F60F550267103802E /* Pods_Sapphire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */; };
 		572664871F61861800692521 /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572664851F61861800692521 /* BalanceCell.swift */; };
 		572664881F61861800692521 /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572664861F61861800692521 /* BalanceCell.xib */; };
@@ -38,14 +39,20 @@
 		57FE6C211F5D84800014C623 /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C201F5D84800014C623 /* WebAPI.swift */; };
 		57FE6C241F5D8A3A0014C623 /* CurrentBalancesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C231F5D8A3A0014C623 /* CurrentBalancesRequest.swift */; };
 		57FE6C2A1F5D8D470014C623 /* SecureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C291F5D8D470014C623 /* SecureConfiguration.swift */; };
+		65CAF5203893EDEA7C519D7D /* AssetsViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6EAF1241B02A21237DE310 /* AssetsViewBuilder.swift */; };
 		7D3C376CDAFCB0B640BE55D8 /* BalancesContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FDF73D6A4A328522CD6A55 /* BalancesContract.swift */; };
 		8BE04E211CEDA0C932F8186F /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D310C9FB763FF84D736D5F4 /* BalancesViewController.swift */; };
 		A0FCD90B542A0361AB457DC5 /* BalancesWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */; };
 		B57DD8390D77644AA85D791B /* BalancesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D58BCA670A4533EA59E554 /* BalancesPresenter.swift */; };
+		D212B2C1C89B50657DC16D25 /* AssetsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F8DF9222A199CF08C23480 /* AssetsWireframe.swift */; };
+		D6A09D7ABBCFA2AEF10CDE3D /* AssetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6219D5671DF4D9FA1E0D0A9E /* AssetsViewController.swift */; };
 		F3EA0E33A12A7D2851558ECF /* BalancesViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9806E019FC489411046AEA3 /* BalancesViewBuilder.swift */; };
+		F76015AAA12F3C740AC3295A /* AssetsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4EBAB1FFFE3DA116ED42F6 /* AssetsInteractor.swift */; };
+		FD8D7652EFE90476DE364A46 /* AssetsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F97B475F4A49D8AF2C439 /* AssetsContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00138DA59B7835FEE20BACA2 /* AssetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsPresenter.swift; sourceTree = "<group>"; };
 		081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapphire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E62B4AC3B00C089F7CBF662 /* Pods-Sapphire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapphire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire.debug.xcconfig"; sourceTree = "<group>"; };
 		572664851F61861800692521 /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
@@ -80,13 +87,18 @@
 		57FE6C231F5D8A3A0014C623 /* CurrentBalancesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBalancesRequest.swift; sourceTree = "<group>"; };
 		57FE6C251F5D8C570014C623 /* Sapphire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sapphire-Bridging-Header.h"; sourceTree = "<group>"; };
 		57FE6C291F5D8D470014C623 /* SecureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureConfiguration.swift; sourceTree = "<group>"; };
+		60F8DF9222A199CF08C23480 /* AssetsWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsWireframe.swift; sourceTree = "<group>"; };
+		6219D5671DF4D9FA1E0D0A9E /* AssetsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsViewController.swift; sourceTree = "<group>"; };
 		64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesWireframe.swift; sourceTree = "<group>"; };
 		66B935D34C468742ABBD1D6E /* BalancesInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesInteractor.swift; sourceTree = "<group>"; };
 		69FDF73D6A4A328522CD6A55 /* BalancesContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesContract.swift; sourceTree = "<group>"; };
+		6B9F97B475F4A49D8AF2C439 /* AssetsContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsContract.swift; sourceTree = "<group>"; };
 		7D310C9FB763FF84D736D5F4 /* BalancesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
+		BC4EBAB1FFFE3DA116ED42F6 /* AssetsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsInteractor.swift; sourceTree = "<group>"; };
 		C0D58BCA670A4533EA59E554 /* BalancesPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesPresenter.swift; sourceTree = "<group>"; };
 		E415C85B3CE43BBCCAA27A9D /* Pods-Sapphire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapphire.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire.release.xcconfig"; sourceTree = "<group>"; };
 		E9806E019FC489411046AEA3 /* BalancesViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesViewBuilder.swift; sourceTree = "<group>"; };
+		FE6EAF1241B02A21237DE310 /* AssetsViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +143,7 @@
 				5790D3D71F55A9CA0032B5A6 /* StartupViewController.swift */,
 				57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */,
 				0A856123B4529D00866F7EE3 /* Balances */,
+				6E99F378DF47CD5EE70580A8 /* Assets */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -242,6 +255,19 @@
 				5741E1061F66848A00DC8C52 /* CurrenciesRequest.swift */,
 			);
 			path = Bittrex;
+			sourceTree = "<group>";
+		};
+		6E99F378DF47CD5EE70580A8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6B9F97B475F4A49D8AF2C439 /* AssetsContract.swift */,
+				BC4EBAB1FFFE3DA116ED42F6 /* AssetsInteractor.swift */,
+				00138DA59B7835FEE20BACA2 /* AssetsPresenter.swift */,
+				FE6EAF1241B02A21237DE310 /* AssetsViewBuilder.swift */,
+				6219D5671DF4D9FA1E0D0A9E /* AssetsViewController.swift */,
+				60F8DF9222A199CF08C23480 /* AssetsWireframe.swift */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		9554955A5A00363DD2B22608 /* Frameworks */ = {
@@ -382,8 +408,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -395,8 +421,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -447,6 +473,12 @@
 				8BE04E211CEDA0C932F8186F /* BalancesViewController.swift in Sources */,
 				573A1C831F5D93D7007523EB /* Balance.swift in Sources */,
 				A0FCD90B542A0361AB457DC5 /* BalancesWireframe.swift in Sources */,
+				FD8D7652EFE90476DE364A46 /* AssetsContract.swift in Sources */,
+				F76015AAA12F3C740AC3295A /* AssetsInteractor.swift in Sources */,
+				554B6FE60A86B01DB859A8E9 /* AssetsPresenter.swift in Sources */,
+				65CAF5203893EDEA7C519D7D /* AssetsViewBuilder.swift in Sources */,
+				D6A09D7ABBCFA2AEF10CDE3D /* AssetsViewController.swift in Sources */,
+				D212B2C1C89B50657DC16D25 /* AssetsWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
