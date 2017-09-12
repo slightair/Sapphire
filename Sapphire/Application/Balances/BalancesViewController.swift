@@ -11,7 +11,7 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
 
     fileprivate let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
-        return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never()})
+        return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
     private var dataSource = RxTableViewSectionedReloadDataSource<BalanceData>()
@@ -28,7 +28,7 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         tabBarItem.title = "Rates"
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

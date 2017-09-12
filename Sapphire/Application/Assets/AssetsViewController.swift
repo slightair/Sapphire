@@ -11,7 +11,7 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
 
     fileprivate let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
-        return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never()})
+        return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
     private let disposeBag = DisposeBag()
@@ -29,7 +29,7 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
         tabBarItem.title = "Assets"
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -48,9 +48,9 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
             rx.sentMessage(#selector(viewWillAppear)).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-            .merge()
-            .bind(to: refreshTriggerSubject)
-            .disposed(by: disposeBag)
+        .merge()
+        .bind(to: refreshTriggerSubject)
+        .disposed(by: disposeBag)
 
         presenter.balanceData
             .map(AssetsViewController.pieChartData)

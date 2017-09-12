@@ -56,8 +56,8 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                                             change: change,
                                             estimatedBTCValue: estimatedBTCValue)
         }
-            .filter { $0.balance > 0 }
-            .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue }
+        .filter { $0.balance > 0 }
+        .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue }
 
         let usdtBTCPrice: Double
         if let usdtBTCMarket = usdtBTCMarket {
