@@ -49,7 +49,7 @@ end
 platform :ios do
   desc "Submit a new Beta Build to DeployGate"
   lane :beta do
-    cocoapods
+    cocoapods(repo_update: true)
 
     team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
 
