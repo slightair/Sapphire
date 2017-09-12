@@ -4,7 +4,7 @@ struct MarketSummary {
     let marketName: String
     let high: Double
     let low: Double
-    let volume: Double
+    let baseVolume: Double
     let last: Double
     let bid: Double
     let ask: Double
@@ -14,7 +14,7 @@ struct MarketSummary {
         case marketName = "MarketName"
         case high = "High"
         case low = "Low"
-        case volume = "Volume"
+        case baseVolume = "BaseVolume"
         case last = "Last"
         case bid = "Bid"
         case ask = "Ask"
@@ -29,7 +29,7 @@ extension MarketSummary: Decodable {
         self.init(marketName: try container.decode(String.self, forKey: .marketName),
                   high: try container.decode(Double.self, forKey: .high),
                   low: try container.decode(Double.self, forKey: .low),
-                  volume: try container.decode(Double.self, forKey: .volume),
+                  baseVolume: try container.decode(Double.self, forKey: .baseVolume),
                   last: try container.decode(Double.self, forKey: .last),
                   bid: try container.decode(Double.self, forKey: .bid),
                   ask: try container.decode(Double.self, forKey: .ask),

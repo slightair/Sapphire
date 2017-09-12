@@ -25,12 +25,15 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
             let currency = currencyPair[1]
             let currencyLongName = currencies.first(where: { $0.currency == currency })?.currencyLong ?? currency
 
+            let scale = group != "USDT" ? Bitcoin.satoshi : 1
+
             let currencyInfo = MarketSummaryData.CurrencyInfo(
                 name: currency,
                 longName: currencyLongName,
-                last: Int64(marketSummary.last * Bitcoin.satoshi),
-                high: Int64(marketSummary.high * Bitcoin.satoshi),
-                low: Int64(marketSummary.low * Bitcoin.satoshi),
+                last: Int64(marketSummary.last * scale),
+                high: Int64(marketSummary.high * scale),
+                low: Int64(marketSummary.low * scale),
+                baseVolume: marketSummary.baseVolume,
                 change: (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
             )
 
@@ -46,7 +49,7 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
             let groupLongName = currencies.first(where: { $0.currency == group })?.currencyLong ?? group
             return MarketSummaryData(date: date,
                                      marketGroup: groupLongName,
-                                     items: items)
+                                     items: items.sorted { a, b in a.baseVolume > b.baseVolume })
         }.sorted { a, b in
             a.marketGroup < b.marketGroup
         }
