@@ -25,7 +25,7 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         super.init(style: .plain)
 
         tabBarItem.image = UIImage.fontAwesomeIcon(name: .bitcoin, textColor: .white, size: CGSize(width: 32, height: 32))
-        tabBarItem.title = "Rates"
+        tabBarItem.title = "Balances"
     }
 
     required init?(coder _: NSCoder) {

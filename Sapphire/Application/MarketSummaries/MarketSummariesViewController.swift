@@ -65,7 +65,8 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
 
         dataSource.titleForHeaderInSection = { dataSource, index in
             let data = dataSource.sectionModels[index]
-            return data.marketGroup
+            let dateString = DateFormatter.default.string(from: data.date)
+            return "\(data.marketGroup) - \(dateString)"
         }
 
         presenter.marketSummaryData
