@@ -1,7 +1,7 @@
 import UIKit
 
 class MarketSummaryCell: UITableViewCell {
-    static let rowHeight: CGFloat = 32
+    static let rowHeight: CGFloat = 36
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!

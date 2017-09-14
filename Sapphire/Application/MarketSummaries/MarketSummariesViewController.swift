@@ -69,6 +69,10 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
             return "\(data.marketGroup) - \(dateString)"
         }
 
+        dataSource.sectionIndexTitles = { dataSource in
+            dataSource.sectionModels.flatMap { $0.marketGroup.first }.map { String($0) }
+        }
+
         presenter.marketSummaryData
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)

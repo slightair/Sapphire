@@ -26,7 +26,7 @@ final class OrdersPresenter: OrdersPresenterProtocol {
                     .catchError { error in
                         self?.errorSubject.onNext(error)
                         return .empty()
-                }
+                    }
             }
             .asDriver(onErrorJustReturn: [])
             .startWith([])

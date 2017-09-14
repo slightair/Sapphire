@@ -26,7 +26,7 @@ final class MarketSummariesPresenter: MarketSummariesPresenterProtocol {
                     .catchError { error in
                         self?.errorSubject.onNext(error)
                         return .empty()
-                }
+                    }
             }
             .asDriver(onErrorJustReturn: [])
             .startWith([])

@@ -8,5 +8,6 @@ final class Appearance {
         UILabel.appearance().textColor = .flatBlueDark
         UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).backgroundColor = .clear
         UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor = .flatBlue
+        UITableView.appearance().sectionIndexColor = .flatBlue
     }
 }

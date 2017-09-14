@@ -19,7 +19,7 @@ struct OrdersUseCase: OrdersUseCaseProtocol {
         let date = Date()
         return [
             OrderData(date: date, group: "Open", items: openOrders),
-            OrderData(date: date, group: "Completed", items: orderHistory)
+            OrderData(date: date, group: "Completed", items: orderHistory),
         ]
     }
 }
