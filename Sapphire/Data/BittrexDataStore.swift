@@ -6,6 +6,8 @@ protocol BittrexDataStoreProtocol {
     func fetchCurrentBalances() -> Single<[Balance]>
     func fetchCurrentMarketSummaries() -> Single<[MarketSummary]>
     func fetchCurrencies() -> Single<[Currency]>
+    func fetchOrderHistory() -> Single<[Order]>
+    func fetchOpenOrders() -> Single<[Order]>
 }
 
 final class BittrexDataStore: BittrexDataStoreProtocol {
@@ -30,8 +32,19 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
         }
 
         let request = BittrexAPI.CurrenciesRequest()
-        return session.rx.response(request).do(onNext: { [weak self] currencies in
-            self?.currencies = currencies
-        })
+        return session.rx.response(request)
+            .do(onNext: { [weak self] currencies in
+                self?.currencies = currencies
+            })
+    }
+
+    func fetchOrderHistory() -> Single<[Order]> {
+        let request = BittrexAPI.OrderHistoryRequest()
+        return session.rx.response(request)
+    }
+
+    func fetchOpenOrders() -> Single<[Order]> {
+        let request = BittrexAPI.OpenOrdersRequest()
+        return session.rx.response(request)
     }
 }

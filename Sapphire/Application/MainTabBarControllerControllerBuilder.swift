@@ -6,6 +6,7 @@ struct MainTabBarControllerControllerBuilder {
         tabBarController.viewControllers = [
             UINavigationController(rootViewController: MarketSummariesViewBuilder.build()),
             UINavigationController(rootViewController: BalancesViewBuilder.build()),
+            UINavigationController(rootViewController: OrdersViewBuilder.build()),
             UINavigationController(rootViewController: AssetsViewBuilder.build()),
         ]
         return tabBarController

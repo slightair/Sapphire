@@ -5,6 +5,8 @@ protocol BittrexRepositoryProtocol {
     func fetchCurrentBalances() -> Single<[Balance]>
     func fetchCurrentMarketSummaries() -> Single<[MarketSummary]>
     func fetchCurrencies() -> Single<[Currency]>
+    func fetchOrderHistory() -> Single<[Order]>
+    func fetchOpenOrders() -> Single<[Order]>
 }
 
 struct BittrexRepository: BittrexRepositoryProtocol {
@@ -20,5 +22,13 @@ struct BittrexRepository: BittrexRepositoryProtocol {
 
     func fetchCurrencies() -> Single<[Currency]> {
         return dataStore.fetchCurrencies()
+    }
+
+    func fetchOrderHistory() -> Single<[Order]> {
+        return dataStore.fetchOrderHistory()
+    }
+
+    func fetchOpenOrders() -> Single<[Order]> {
+        return dataStore.fetchOpenOrders()
     }
 }

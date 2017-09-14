@@ -126,6 +126,10 @@ extension BittrexAPIRequest where Response: Decodable {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode(BittrexAPI.Response<Response>.self, from: data).result
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601)
+
+        return try decoder.decode(BittrexAPI.Response<Response>.self, from: data).result
     }
 }
