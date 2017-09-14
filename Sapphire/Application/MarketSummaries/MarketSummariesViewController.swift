@@ -2,7 +2,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-import FontAwesome_swift
 import Whisper
 
 final class MarketSummariesViewController: UITableViewController, MarketSummariesViewProtocol {
@@ -18,17 +17,6 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
 
     func inject(presenter: MarketSummariesPresenterProtocol) {
         self.presenter = presenter
-    }
-
-    init() {
-        super.init(style: .plain)
-
-        tabBarItem.image = UIImage.fontAwesomeIcon(name: .lineChart, textColor: .white, size: CGSize(width: 32, height: 32))
-        tabBarItem.title = "Market"
-    }
-
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {

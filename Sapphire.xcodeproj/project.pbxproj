@@ -26,6 +26,7 @@
 		5738BE971F6A437B00DFDAF3 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738BE961F6A437B00DFDAF3 /* OrderData.swift */; };
 		5738BE9A1F6A4A3C00DFDAF3 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738BE981F6A4A3C00DFDAF3 /* OrderCell.swift */; };
 		5738BE9B1F6A4A3C00DFDAF3 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5738BE991F6A4A3C00DFDAF3 /* OrderCell.xib */; };
+		5738BE9D1F6A674900DFDAF3 /* MarketSummariesSplitViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738BE9C1F6A674900DFDAF3 /* MarketSummariesSplitViewControllerBuilder.swift */; };
 		573A1C831F5D93D7007523EB /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A1C821F5D93D7007523EB /* Balance.swift */; };
 		573A1C851F5D97AB007523EB /* DecodableDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573A1C841F5D97AB007523EB /* DecodableDataParser.swift */; };
 		573A1C861F5EED72007523EB /* Session+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE6C1B1F5D835B0014C623 /* Session+Debug.swift */; };
@@ -94,6 +95,7 @@
 		5738BE961F6A437B00DFDAF3 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
 		5738BE981F6A4A3C00DFDAF3 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		5738BE991F6A4A3C00DFDAF3 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		5738BE9C1F6A674900DFDAF3 /* MarketSummariesSplitViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummariesSplitViewControllerBuilder.swift; sourceTree = "<group>"; };
 		573A1C821F5D93D7007523EB /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		573A1C841F5D97AB007523EB /* DecodableDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDataParser.swift; sourceTree = "<group>"; };
 		5741E1011F667EC400DC8C52 /* NumberFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extensions.swift"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				5790D3D71F55A9CA0032B5A6 /* StartupViewController.swift */,
 				57FE6C121F59F0E30014C623 /* MainTabBarControllerControllerBuilder.swift */,
+				5738BE9C1F6A674900DFDAF3 /* MarketSummariesSplitViewControllerBuilder.swift */,
 				0A856123B4529D00866F7EE3 /* Balances */,
 				6E99F378DF47CD5EE70580A8 /* Assets */,
 				91BB629DB63B7B92B4B38396 /* MarketSummaries */,
@@ -548,6 +551,7 @@
 				57487D031F66791700C8AACE /* Bitcoin.swift in Sources */,
 				57B0DD531F666D4600652681 /* MarketSummary.swift in Sources */,
 				57487D051F66796C00C8AACE /* DateFormatter+Extensions.swift in Sources */,
+				5738BE9D1F6A674900DFDAF3 /* MarketSummariesSplitViewControllerBuilder.swift in Sources */,
 				5726648F1F618AFD00692521 /* BalanceData.swift in Sources */,
 				5726648D1F6188C900692521 /* BittrexRepository.swift in Sources */,
 				5741E1071F66848A00DC8C52 /* CurrenciesRequest.swift in Sources */,

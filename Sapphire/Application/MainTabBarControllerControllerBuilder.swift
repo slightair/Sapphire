@@ -4,7 +4,7 @@ struct MainTabBarControllerControllerBuilder {
     static func build() -> UIViewController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
-            UINavigationController(rootViewController: MarketSummariesViewBuilder.build()),
+            MarketSummariesSplitViewControllerBuilder.build(),
             UINavigationController(rootViewController: BalancesViewBuilder.build()),
             UINavigationController(rootViewController: OrdersViewBuilder.build()),
             UINavigationController(rootViewController: AssetsViewBuilder.build()),
