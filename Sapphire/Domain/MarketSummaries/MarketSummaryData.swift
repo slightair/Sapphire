@@ -3,6 +3,7 @@ import RxDataSources
 
 struct MarketSummaryData {
     struct CurrencyInfo {
+        let market: String
         let name: String
         let longName: String
         let last: Int64

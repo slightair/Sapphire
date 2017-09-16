@@ -4,6 +4,7 @@ import RxCocoa
 
 protocol MarketSummariesViewProtocol: class {
     var refreshTrigger: Driver<Void> { get }
+    var selectedMarket: Driver<String> { get }
 }
 
 protocol MarketSummariesPresenterProtocol: class {
@@ -16,4 +17,5 @@ protocol MarketSummariesInteractorProtocol: class {
 }
 
 protocol MarketSummariesWireframeProtocol: class {
+    func presentMarketDetailView(market: String)
 }

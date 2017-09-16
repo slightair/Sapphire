@@ -4,30 +4,23 @@ import RxCocoa
 import RxDataSources
 import Whisper
 
-final class MarketSummariesViewController: UITableViewController, MarketSummariesViewProtocol {
-    private var presenter: MarketSummariesPresenterProtocol!
+final class MarketDetailViewController: UITableViewController, MarketDetailViewProtocol {
+    private var presenter: MarketDetailPresenterProtocol!
 
     fileprivate let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    fileprivate let selectedMarketSubject = PublishSubject<String>()
-    var selectedMarket: Driver<String> {
-        return selectedMarketSubject.asDriver(onErrorRecover: { _ in .never() })
-    }
-
-    private var dataSource = RxTableViewSectionedReloadDataSource<MarketSummaryData>()
+    private var dataSource = RxTableViewSectionedReloadDataSource<MarketDetailData.Section>()
     private let disposeBag = DisposeBag()
 
-    func inject(presenter: MarketSummariesPresenterProtocol) {
+    func inject(presenter: MarketDetailPresenterProtocol) {
         self.presenter = presenter
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Market"
 
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: nil)
         navigationItem.rightBarButtonItem = refreshButton
@@ -44,33 +37,47 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         .bind(to: refreshTriggerSubject)
         .disposed(by: disposeBag)
 
-        tableView.rowHeight = MarketSummaryCell.rowHeight
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.registerFromNib(of: MarketSummaryCell.self)
+        tableView.registerFromNib(of: MarketDetailChartCell.self)
+        tableView.registerFromNib(of: OrderCell.self)
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { _, tableView, indexPath, currencyInfo in
-            let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.update(currencyInfo: currencyInfo)
-            return cell
+        dataSource.configureCell = { dataSource, tableView, indexPath, _ in
+            let data = dataSource[indexPath]
+            switch data {
+            case let .chartSectionItem(chart):
+                let cell: MarketDetailChartCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(chart: chart)
+                return cell
+            case let .summarySectionItem(currencyInfo):
+                let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(currencyInfo: currencyInfo)
+                cell.selectionStyle = .none
+                return cell
+            case let .openOrdersSectionItem(order):
+                let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(order: order)
+                return cell
+            case let .orderHistorySectionItem(order):
+                let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(order: order)
+                return cell
+            }
         }
 
         dataSource.titleForHeaderInSection = { dataSource, index in
             let data = dataSource.sectionModels[index]
-            let dateString = DateFormatter.default.string(from: data.date)
-            return "\(data.marketGroup) - \(dateString)"
+            return data.title
         }
 
-        dataSource.sectionIndexTitles = { dataSource in
-            dataSource.sectionModels.flatMap { $0.marketGroup.first }.map { String($0) }
-        }
-
-        presenter.marketSummaryData
+        presenter.marketDetailData
+            .map { $0.sections }
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
-        Driver.of(presenter.marketSummaryData.map { _ in false }, presenter.errors.map { _ in false })
+        Driver.of(presenter.marketDetailData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
@@ -81,11 +88,6 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
                 let message = Message(title: error.localizedDescription, textColor: .flatWhite, backgroundColor: .flatRed)
                 Whisper.show(whisper: message, to: navigationController)
             })
-            .disposed(by: disposeBag)
-
-        tableView.rx.modelSelected(MarketSummaryData.CurrencyInfo.self)
-            .map { $0.market }
-            .bind(to: selectedMarketSubject)
             .disposed(by: disposeBag)
     }
 }

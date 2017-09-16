@@ -16,10 +16,15 @@ struct MarketSummariesSplitViewControllerBuilder {
     }
 
     static func build() -> UIViewController {
+        let dummyViewController = UIViewController()
+        dummyViewController.title = "No market selected"
+        dummyViewController.view.backgroundColor = .white
+
         let masterViewController = UINavigationController(rootViewController: MarketSummariesViewBuilder.build())
+        let detailViewController = UINavigationController(rootViewController: dummyViewController)
 
         let splitViewController = MarketSummariesSplitViewController()
-        splitViewController.viewControllers = [masterViewController]
+        splitViewController.viewControllers = [masterViewController, detailViewController]
 
         return splitViewController
     }

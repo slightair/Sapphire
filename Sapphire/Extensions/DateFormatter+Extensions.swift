@@ -16,4 +16,12 @@ extension DateFormatter {
 
         return formatter
     }()
+
+    static let iso8601noneMilliSec: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+
+        return formatter
+    }()
 }

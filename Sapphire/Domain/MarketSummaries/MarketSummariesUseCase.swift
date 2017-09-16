@@ -2,13 +2,13 @@ import Foundation
 import RxSwift
 
 protocol MarketSummariesUseCaseProtocol {
-    func fetchCurrentMarketSummaries() -> Single<[MarketSummaryData]>
+    func fetchCurrentMarketSummaryData() -> Single<[MarketSummaryData]>
 }
 
 struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
     let bittrexRepository: BittrexRepositoryProtocol
 
-    func fetchCurrentMarketSummaries() -> Single<[MarketSummaryData]> {
+    func fetchCurrentMarketSummaryData() -> Single<[MarketSummaryData]> {
         return Single.zip(
             bittrexRepository.fetchCurrentMarketSummaries(),
             bittrexRepository.fetchCurrencies()
@@ -28,6 +28,7 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
             let scale = group != "USDT" ? Bitcoin.satoshi : 1
 
             let currencyInfo = MarketSummaryData.CurrencyInfo(
+                market: marketSummary.marketName,
                 name: currency,
                 longName: currencyLongName,
                 last: Int64(marketSummary.last * scale),

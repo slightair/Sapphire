@@ -14,6 +14,8 @@ final class MarketSummariesPresenter: MarketSummariesPresenterProtocol {
         return errorSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
+    let disposeBag = DisposeBag()
+
     init(view: MarketSummariesViewProtocol, interactor: MarketSummariesInteractorProtocol, wireframe: MarketSummariesWireframeProtocol) {
         self.view = view
         self.interactor = interactor
@@ -30,5 +32,9 @@ final class MarketSummariesPresenter: MarketSummariesPresenterProtocol {
             }
             .asDriver(onErrorJustReturn: [])
             .startWith([])
+
+        view.selectedMarket
+            .drive(onNext: wireframe.presentMarketDetailView)
+            .disposed(by: disposeBag)
     }
 }

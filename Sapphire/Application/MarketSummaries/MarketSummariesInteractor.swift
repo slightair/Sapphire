@@ -9,6 +9,6 @@ final class MarketSummariesInteractor: MarketSummariesInteractorProtocol {
     }
 
     func fetchMarketSummaryData() -> Single<[MarketSummaryData]> {
-        return marketSummariesUseCase.fetchCurrentMarketSummaries()
+        return marketSummariesUseCase.fetchCurrentMarketSummaryData()
     }
 }
