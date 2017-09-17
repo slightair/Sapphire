@@ -3,6 +3,7 @@ import ChameleonFramework
 
 class BalanceCell: UITableViewCell {
     static let rowHeight: CGFloat = 60
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!
@@ -13,7 +14,7 @@ class BalanceCell: UITableViewCell {
     @IBOutlet weak var changeLabel: UILabel!
 
     func update(currencyInfo: BalanceData.CurrencyInfo) {
-        thumbnailImageView.image = UIImage(named: currencyInfo.name)
+        thumbnailImageView.image = UIImage(named: currencyInfo.name) ?? BalanceCell.placeholderImage
         currencyNameLabel.text = currencyInfo.longName
         currencyBalanceLabel.text = NumberFormatter.currency.string(from: NSNumber(value: currencyInfo.balance))
         estimatedBTCValueLabel.text = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.estimatedBTCValue))

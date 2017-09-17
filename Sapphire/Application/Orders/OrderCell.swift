@@ -2,6 +2,7 @@ import UIKit
 
 class OrderCell: UITableViewCell {
     static let rowHeight: CGFloat = 60
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var exchangeLabel: UILabel!
@@ -13,7 +14,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
 
     func update(orderInfo: OrderData.OrderInfo) {
-        thumbnailImageView.image = UIImage(named: orderInfo.currency)
+        thumbnailImageView.image = UIImage(named: orderInfo.currency) ?? OrderCell.placeholderImage
         exchangeLabel.text = orderInfo.exchange
         orderTypeLabel.text = orderInfo.orderType
         limitLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: orderInfo.limit)) ?? "") \(orderInfo.baseCurrency)"
@@ -35,7 +36,7 @@ class OrderCell: UITableViewCell {
             closedString = ""
         }
         dateLabel.text = "\(openedString) - \(closedString)"
-        priceLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: orderInfo.price)) ?? "") \(orderInfo.baseCurrency)"
+        priceLabel.text = "\(NumberFormatter.currency.string(from: NSNumber(value: orderInfo.price)) ?? "") \(orderInfo.baseCurrency)"
         priceLabel.textColor = orderInfo.price > 0 ? .flatGreen : .flatRed
     }
 }

@@ -1,7 +1,10 @@
 import UIKit
+import ChameleonFramework
+import FontAwesome_swift
 
 class MarketSummaryCell: UITableViewCell {
     static let rowHeight: CGFloat = 36
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!
@@ -11,7 +14,7 @@ class MarketSummaryCell: UITableViewCell {
     @IBOutlet weak var changeLabel: UILabel!
 
     func update(currencyInfo: MarketSummaryData.CurrencyInfo) {
-        thumbnailImageView.image = UIImage(named: currencyInfo.name)
+        thumbnailImageView.image = UIImage(named: currencyInfo.name) ?? MarketSummaryCell.placeholderImage
         currencyNameLabel.text = currencyInfo.longName
 
         volumeLabel.text = NumberFormatter.currency.string(from: NSNumber(value: currencyInfo.baseVolume))
