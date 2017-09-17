@@ -36,7 +36,7 @@ struct OrdersUseCase: OrdersUseCaseProtocol {
                 opened: order.opened,
                 closed: order.closed)
         }
-        let orderHistoryItems: [OrderData.OrderInfo] = openOrders.map {
+        let orderHistoryItems: [OrderData.OrderInfo] = orderHistory.map {
             OrderData.OrderInfo(
                 exchange: $0.exchange,
                 orderType: $0.orderType,
