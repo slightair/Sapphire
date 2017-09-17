@@ -25,8 +25,8 @@ struct MarketDetailData {
     enum SectionItem {
         case chartSectionItem(chart: Chart)
         case summarySectionItem(currencyInfo: MarketSummaryData.CurrencyInfo)
-        case openOrdersSectionItem(order: Order)
-        case orderHistorySectionItem(order: Order)
+        case openOrdersSectionItem(orderInfo: OrderData.OrderInfo)
+        case orderHistorySectionItem(orderInfo: OrderData.OrderInfo)
     }
 
     var date: Date

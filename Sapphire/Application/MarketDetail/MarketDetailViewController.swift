@@ -56,13 +56,13 @@ final class MarketDetailViewController: UITableViewController, MarketDetailViewP
                 cell.update(currencyInfo: currencyInfo)
                 cell.selectionStyle = .none
                 return cell
-            case let .openOrdersSectionItem(order):
+            case let .openOrdersSectionItem(orderInfo):
                 let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(order: order)
+                cell.update(orderInfo: orderInfo)
                 return cell
-            case let .orderHistorySectionItem(order):
+            case let .orderHistorySectionItem(orderInfo):
                 let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(order: order)
+                cell.update(orderInfo: orderInfo)
                 return cell
             }
         }

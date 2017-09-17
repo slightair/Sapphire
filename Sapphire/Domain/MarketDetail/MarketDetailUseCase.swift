@@ -26,12 +26,23 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
             .summary(items: [.summarySectionItem(currencyInfo: currencyInfo)]),
         ]
 
+        func createOrderInfo(_ order: Order) -> OrderData.OrderInfo {
+            return OrderData.OrderInfo(
+                exchange: order.exchange,
+                orderType: order.orderType,
+                limit: order.limit,
+                last: nil,
+                quantity: order.quantity,
+                opened: order.opened,
+                closed: order.closed)
+        }
+
         if openOrders.count > 0 {
-            sections.append(.openOrders(items: openOrders.map { .openOrdersSectionItem(order: $0) }))
+            sections.append(.openOrders(items: openOrders.map { .openOrdersSectionItem(orderInfo: createOrderInfo($0)) }))
         }
 
         if orderHistory.count > 0 {
-            sections.append(.orderHistory(items: orderHistory.map { .orderHistorySectionItem(order: $0) }))
+            sections.append(.orderHistory(items: orderHistory.map { .orderHistorySectionItem(orderInfo: createOrderInfo($0)) }))
         }
 
         return MarketDetailData(date: Date(), sections: sections)

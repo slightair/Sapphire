@@ -57,9 +57,9 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { _, tableView, indexPath, order in
+        dataSource.configureCell = { _, tableView, indexPath, orderInfo in
             let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.update(order: order)
+            cell.update(orderInfo: orderInfo)
             return cell
         }
 

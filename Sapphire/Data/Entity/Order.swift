@@ -9,20 +9,6 @@ struct Order {
     let opened: Date
     let closed: Date?
 
-    var baseCurrency: String {
-        let currencyPair = exchange.components(separatedBy: "-")
-        return currencyPair[0]
-    }
-
-    var currency: String {
-        let currencyPair = exchange.components(separatedBy: "-")
-        return currencyPair[1]
-    }
-
-    var price: Double {
-        return limit * quantity * (orderType == "LIMIT_SELL" ? 1 : -1)
-    }
-
     enum CodingKeys: String, CodingKey {
         case uuid = "OrderUuid"
         case exchange = "Exchange"

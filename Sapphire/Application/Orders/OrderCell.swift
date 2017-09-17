@@ -7,26 +7,35 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var exchangeLabel: UILabel!
     @IBOutlet weak var orderTypeLabel: UILabel!
     @IBOutlet weak var limitLabel: UILabel!
+    @IBOutlet weak var lastValueLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
 
-    func update(order: Order) {
-        thumbnailImageView.image = UIImage(named: order.currency)
-        exchangeLabel.text = order.exchange
-        orderTypeLabel.text = order.orderType
-        limitLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: order.limit)) ?? "") \(order.baseCurrency)"
-        quantityLabel.text = NumberFormatter.currency.string(from: NSNumber(value: order.quantity))
+    func update(orderInfo: OrderData.OrderInfo) {
+        thumbnailImageView.image = UIImage(named: orderInfo.currency)
+        exchangeLabel.text = orderInfo.exchange
+        orderTypeLabel.text = orderInfo.orderType
+        limitLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: orderInfo.limit)) ?? "") \(orderInfo.baseCurrency)"
 
-        let openedString = DateFormatter.default.string(from: order.opened)
+        if let last = orderInfo.last {
+            lastValueLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: last)) ?? "") \(orderInfo.baseCurrency)"
+            lastValueLabel.isHidden = false
+        } else {
+            lastValueLabel.text = nil
+            lastValueLabel.isHidden = true
+        }
+        quantityLabel.text = NumberFormatter.currency.string(from: NSNumber(value: orderInfo.quantity))
+
+        let openedString = DateFormatter.default.string(from: orderInfo.opened)
         let closedString: String
-        if let closed = order.closed {
+        if let closed = orderInfo.closed {
             closedString = DateFormatter.default.string(from: closed)
         } else {
             closedString = ""
         }
         dateLabel.text = "\(openedString) - \(closedString)"
-        priceLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: order.price)) ?? "") \(order.baseCurrency)"
-        priceLabel.textColor = order.price > 0 ? .flatGreen : .flatRed
+        priceLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: orderInfo.price)) ?? "") \(orderInfo.baseCurrency)"
+        priceLabel.textColor = orderInfo.price > 0 ? .flatGreen : .flatRed
     }
 }
