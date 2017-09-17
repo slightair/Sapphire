@@ -73,7 +73,7 @@ class MarketDetailChartCell: UITableViewCell {
     }
 
     static func candleData(from chart: Chart) -> CandleChartData {
-        let magnification: Double = Bitcoin.satoshi
+        let magnification: Double = chart.market.hasPrefix("BTC") ? Bitcoin.satoshi : 1.0
         let entries = chart.ticks.suffix(MarketDetailChartCell.numberOfTicks).enumerated().map { index, record in
             CandleChartDataEntry(x: Double(index),
                                  shadowH: record.high * magnification,

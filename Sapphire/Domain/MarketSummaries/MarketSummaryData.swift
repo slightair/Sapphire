@@ -6,9 +6,9 @@ struct MarketSummaryData {
         let market: String
         let name: String
         let longName: String
-        let last: Int64
-        let high: Int64
-        let low: Int64
+        let last: Double
+        let high: Double
+        let low: Double
         let baseVolume: Double
         let change: Double
     }

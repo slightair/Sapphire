@@ -20,27 +20,27 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
         let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" })
 
         var infoList: [BalanceData.CurrencyInfo] = balances.map { balance in
-            let estimatedBTCValue: Int64
-            var last: Int64?
-            var high: Int64?
-            var low: Int64?
+            let estimatedBTCValue: Double
+            var last: Double?
+            var high: Double?
+            var low: Double?
             var change: Double?
 
             if balance.currency == "BTC" {
-                estimatedBTCValue = Int64(balance.balance * Bitcoin.satoshi)
+                estimatedBTCValue = balance.balance * Bitcoin.satoshi
                 if let marketSummary = usdtBTCMarket {
-                    last = Int64(marketSummary.last)
-                    high = Int64(marketSummary.high)
-                    low = Int64(marketSummary.low)
+                    last = marketSummary.last
+                    high = marketSummary.high
+                    low = marketSummary.low
                     change = (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
                 }
             } else {
                 let marketName = "BTC-\(balance.currency)"
                 if let marketSummary = marketSummaries.first(where: { $0.marketName == marketName }) {
-                    estimatedBTCValue = Int64(balance.balance * marketSummary.last * Bitcoin.satoshi)
-                    last = Int64(marketSummary.last * Bitcoin.satoshi)
-                    high = Int64(marketSummary.high * Bitcoin.satoshi)
-                    low = Int64(marketSummary.low * Bitcoin.satoshi)
+                    estimatedBTCValue = balance.balance * marketSummary.last * Bitcoin.satoshi
+                    last = marketSummary.last * Bitcoin.satoshi
+                    high = marketSummary.high * Bitcoin.satoshi
+                    low = marketSummary.low * Bitcoin.satoshi
                     change = (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
                 } else {
                     estimatedBTCValue = 0

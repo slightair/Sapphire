@@ -19,10 +19,23 @@ class MarketSummaryCell: UITableViewCell {
         changeLabel.text = NumberFormatter.percent.string(from: NSNumber(value: currencyInfo.change))
         changeLabel.textColor = currencyInfo.change >= 0 ? .flatGreen : .flatRed
 
-        lastValueLabel.text = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.last))
+        let valueFormatter: NumberFormatter
+        let baseCurrency = currencyInfo.market.components(separatedBy: "-").first ?? ""
+        switch baseCurrency {
+        case "BTC":
+            valueFormatter = .decimal
+        case "ETH":
+            valueFormatter = .currencyFullBTC
+        case "USDT":
+            valueFormatter = .currency
+        default:
+            valueFormatter = .currency
+        }
 
-        let highString = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.high)) ?? "(N/A)"
-        let lowString = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.low)) ?? "(N/A)"
+        lastValueLabel.text = valueFormatter.string(from: NSNumber(value: currencyInfo.last))
+
+        let highString = valueFormatter.string(from: NSNumber(value: currencyInfo.high)) ?? "(N/A)"
+        let lowString = valueFormatter.string(from: NSNumber(value: currencyInfo.low)) ?? "(N/A)"
         highAndLowLabel.text = "\(highString) / \(lowString)"
     }
 }
