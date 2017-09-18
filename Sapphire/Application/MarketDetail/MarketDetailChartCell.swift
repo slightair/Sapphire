@@ -31,18 +31,6 @@ class MarketDetailChartCell: UITableViewCell {
         }
     }
 
-    class DecimalValueFormatter: NSObject, IAxisValueFormatter {
-        let chart: Chart
-
-        init(chart: Chart) {
-            self.chart = chart
-        }
-
-        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-            return NumberFormatter.decimal.string(from: NSNumber(value: value))!
-        }
-    }
-
     @IBOutlet weak var chartView: CandleStickChartView!
 
     override func awakeFromNib() {
@@ -67,8 +55,15 @@ class MarketDetailChartCell: UITableViewCell {
     }
 
     func update(chart: Chart) {
+        let currencyValueFormatter: IAxisValueFormatter
+        if chart.market.hasPrefix("BTC") {
+            currencyValueFormatter = DefaultAxisValueFormatter(formatter: .decimal)
+        } else {
+            currencyValueFormatter = DefaultAxisValueFormatter(formatter: .currency)
+        }
+
         chartView.xAxis.valueFormatter = MarketDetailChartCell.DateValueFormatter(chart: chart)
-        chartView.rightAxis.valueFormatter = MarketDetailChartCell.DecimalValueFormatter(chart: chart)
+        chartView.rightAxis.valueFormatter = currencyValueFormatter
         chartView.data = MarketDetailChartCell.candleData(from: chart)
     }
 
