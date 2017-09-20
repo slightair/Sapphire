@@ -2,7 +2,7 @@ import UIKit
 import Charts
 
 class MarketDetailChartCell: UITableViewCell {
-    static let numberOfTicks = 48
+    static let numberOfTicks = 96
 
     class DateValueFormatter: NSObject, IAxisValueFormatter {
         static let timeDateFormatter: DateFormatter = {
