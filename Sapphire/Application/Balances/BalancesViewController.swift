@@ -52,7 +52,6 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         .bind(to: refreshTriggerSubject)
         .disposed(by: disposeBag)
 
-        tableView.rowHeight = BalanceCell.rowHeight
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.registerFromNib(of: BalanceCell.self)
         tableView.delegate = nil

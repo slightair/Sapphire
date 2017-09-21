@@ -89,5 +89,4 @@ class MarketDetailChartCell: UITableViewCell {
 
         return CandleChartData(dataSet: dataSet)
     }
-
 }

@@ -11,6 +11,7 @@ struct BalanceData {
         let low: Double?
         let change: Double?
         let estimatedBTCValue: Double
+        let chart: Chart
     }
 
     var date: Date

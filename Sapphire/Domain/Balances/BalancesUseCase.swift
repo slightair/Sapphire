@@ -10,16 +10,26 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
 
     func fetchCurrentBalanceData() -> Single<BalanceData> {
         return Single.zip(
-            bittrexRepository.fetchCurrentBalances(),
+            bittrexRepository.fetchCurrentBalances()
+                .flatMap { balances -> Single<[(Balance, Chart)]> in
+                    Observable.zip(
+                        balances.map { balance -> Observable<(Balance, Chart)> in
+                            let market = balance.currency == "BTC" ? "USDT-BTC" : "BTC-\(balance.currency)"
+                            return self.bittrexRepository.fetchCurrentChart(market: market, tickInterval: .thirtyMin)
+                                .map { (balance, $0) }
+                                .asObservable()
+                        }
+                    ).asSingle()
+                },
             bittrexRepository.fetchCurrentMarketSummaries(),
             bittrexRepository.fetchCurrencies()
         ).map(BalancesUseCase.translate)
     }
 
-    static func translate(balances: [Balance], marketSummaries: [MarketSummary], currencies: [Currency]) -> BalanceData {
+    static func translate(balances: [(Balance, Chart)], marketSummaries: [MarketSummary], currencies: [Currency]) -> BalanceData {
         let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" })
 
-        var infoList: [BalanceData.CurrencyInfo] = balances.map { balance in
+        var infoList: [BalanceData.CurrencyInfo] = balances.map { balance, chart in
             let estimatedBTCValue: Double
             var last: Double?
             var high: Double?
@@ -54,7 +64,8 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                                             high: high,
                                             low: low,
                                             change: change,
-                                            estimatedBTCValue: estimatedBTCValue)
+                                            estimatedBTCValue: estimatedBTCValue,
+                                            chart: chart)
         }
         .filter { $0.balance > 0 }
         .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue }
