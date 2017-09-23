@@ -36,7 +36,7 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         tableView.refreshControl = refreshControl
 
         Observable.of(
-            rx.sentMessage(#selector(viewWillAppear)).map { _ in },
+            rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )

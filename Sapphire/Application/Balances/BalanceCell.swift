@@ -2,7 +2,7 @@ import UIKit
 import Charts
 import ChameleonFramework
 
-class BalanceCell: UITableViewCell {
+class BalanceCell: UICollectionViewCell {
     static let numberOfTicks = 96
     static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
 
@@ -126,5 +126,13 @@ class BalanceCell: UITableViewCell {
         dataSet.neutralColor = .flatBlue
 
         return CandleChartData(dataSet: dataSet)
+    }
+
+    static func cellSize(forWidth width: CGFloat) -> CGSize {
+        let chartHeight: CGFloat = (width - 16 * 2 - 8 * 2) * (9 / 16)
+        let summaryHeight: CGFloat = 48
+        let cellHeight = 8 * 2 + 16 * 2 + chartHeight + summaryHeight
+
+        return CGSize(width: width, height: cellHeight)
     }
 }

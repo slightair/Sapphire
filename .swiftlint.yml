@@ -10,5 +10,6 @@ disabled_rules:
   - nesting
   - large_tuple
   - cyclomatic_complexity
+  - generic_type_name
 excluded:
   - Pods

@@ -50,6 +50,9 @@
 		579B234C765E0006581C61DD /* MarketDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00622BB501B10B1AFEF27CD /* MarketDetailPresenter.swift */; };
 		57B0DD511F666CC300652681 /* CurrentMarketSummariesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */; };
 		57B0DD531F666D4600652681 /* MarketSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B0DD521F666D4600652681 /* MarketSummary.swift */; };
+		57E4F6151F73D4BB00D0759C /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4F6141F73D4BB00D0759C /* UICollectionView+Extensions.swift */; };
+		57E4F6181F76A4CE00D0759C /* BalancesSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4F6161F76A4CE00D0759C /* BalancesSectionHeaderView.swift */; };
+		57E4F6191F76A4CE00D0759C /* BalancesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */; };
 		57E682BC1F6839E400507F3D /* MarketSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E682BB1F6839E400507F3D /* MarketSummaryData.swift */; };
 		57E682BE1F683D9800507F3D /* MarketSummariesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E682BD1F683D9800507F3D /* MarketSummariesUseCase.swift */; };
 		57E682C31F684CC900507F3D /* MarketSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E682C11F684CC900507F3D /* MarketSummaryCell.swift */; };
@@ -130,6 +133,9 @@
 		5798FC711F619431005555BE /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarketSummariesRequest.swift; sourceTree = "<group>"; };
 		57B0DD521F666D4600652681 /* MarketSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummary.swift; sourceTree = "<group>"; };
+		57E4F6141F73D4BB00D0759C /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		57E4F6161F76A4CE00D0759C /* BalancesSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesSectionHeaderView.swift; sourceTree = "<group>"; };
+		57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalancesSectionHeaderView.xib; sourceTree = "<group>"; };
 		57E682BB1F6839E400507F3D /* MarketSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummaryData.swift; sourceTree = "<group>"; };
 		57E682BD1F683D9800507F3D /* MarketSummariesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummariesUseCase.swift; sourceTree = "<group>"; };
 		57E682C11F684CC900507F3D /* MarketSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummaryCell.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 				64E9C44623E00EDC898C1BFA /* BalancesWireframe.swift */,
 				572664851F61861800692521 /* BalanceCell.swift */,
 				572664861F61861800692521 /* BalanceCell.xib */,
+				57E4F6161F76A4CE00D0759C /* BalancesSectionHeaderView.swift */,
+				57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */,
 			);
 			path = Balances;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				5798FC711F619431005555BE /* UITableView+Extensions.swift */,
+				57E4F6141F73D4BB00D0759C /* UICollectionView+Extensions.swift */,
 				57487D041F66796C00C8AACE /* DateFormatter+Extensions.swift */,
 				5741E1011F667EC400DC8C52 /* NumberFormatter+Extensions.swift */,
 			);
@@ -501,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E4F6191F76A4CE00D0759C /* BalancesSectionHeaderView.xib in Resources */,
 				5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */,
 				5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */,
 				5738BE9B1F6A4A3C00DFDAF3 /* OrderCell.xib in Resources */,
@@ -652,6 +662,7 @@
 				D212B2C1C89B50657DC16D25 /* AssetsWireframe.swift in Sources */,
 				57E682C31F684CC900507F3D /* MarketSummaryCell.swift in Sources */,
 				F7C0EF1743C500FFB63EFE65 /* MarketSummariesContract.swift in Sources */,
+				57E4F6181F76A4CE00D0759C /* BalancesSectionHeaderView.swift in Sources */,
 				57EEF37B1F6AB97200D9DC8E /* CurrentTicksRequest.swift in Sources */,
 				5738BE971F6A437B00DFDAF3 /* OrderData.swift in Sources */,
 				D852504EEE87EC5C0EA7CAB6 /* MarketSummariesInteractor.swift in Sources */,
@@ -672,6 +683,7 @@
 				489242D4A63A2818579554A9 /* MarketDetailInteractor.swift in Sources */,
 				579B234C765E0006581C61DD /* MarketDetailPresenter.swift in Sources */,
 				57EEF37D1F6ABB6900D9DC8E /* CurrentMarketSummaryRequest.swift in Sources */,
+				57E4F6151F73D4BB00D0759C /* UICollectionView+Extensions.swift in Sources */,
 				C83B87580B4B1339B92FE6DE /* MarketDetailViewBuilder.swift in Sources */,
 				12FACF1768C5EF23689F338B /* MarketDetailViewController.swift in Sources */,
 				A4E723D4BD6226C8E6663D80 /* MarketDetailWireframe.swift in Sources */,

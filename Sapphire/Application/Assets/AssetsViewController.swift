@@ -45,7 +45,7 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
         navigationItem.rightBarButtonItem = refreshButton
 
         Observable.of(
-            rx.sentMessage(#selector(viewWillAppear)).map { _ in },
+            rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
         .merge()

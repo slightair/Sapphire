@@ -6,7 +6,7 @@ import ChameleonFramework
 import FontAwesome_swift
 import Whisper
 
-final class BalancesViewController: UITableViewController, BalancesViewProtocol {
+final class BalancesViewController: UICollectionViewController, BalancesViewProtocol {
     private var presenter: BalancesPresenterProtocol!
 
     fileprivate let refreshTriggerSubject = PublishSubject<Void>()
@@ -14,7 +14,7 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    private var dataSource = RxTableViewSectionedReloadDataSource<BalanceData>()
+    private var dataSource = RxCollectionViewSectionedReloadDataSource<BalanceData>()
     private let disposeBag = DisposeBag()
 
     func inject(presenter: BalancesPresenterProtocol) {
@@ -22,7 +22,7 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
     }
 
     init() {
-        super.init(style: .plain)
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
 
         tabBarItem.image = UIImage.fontAwesomeIcon(name: .bitcoin, textColor: .white, size: CGSize(width: 32, height: 32))
         tabBarItem.title = "Balances"
@@ -37,14 +37,18 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
 
         title = "Balances"
 
+        guard let collectionView = collectionView else {
+            fatalError("CollectionView not found")
+        }
+
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: nil)
         navigationItem.rightBarButtonItem = refreshButton
 
         let refreshControl = UIRefreshControl()
-        tableView.refreshControl = refreshControl
+        collectionView.refreshControl = refreshControl
 
         Observable.of(
-            rx.sentMessage(#selector(viewWillAppear)).map { _ in },
+            rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
@@ -52,28 +56,42 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
         .bind(to: refreshTriggerSubject)
         .disposed(by: disposeBag)
 
-        tableView.cellLayoutMarginsFollowReadableWidth = false
-        tableView.registerFromNib(of: BalanceCell.self)
-        tableView.delegate = nil
-        tableView.dataSource = nil
+        collectionView.registerFromNib(of: BalanceCell.self)
+        collectionView.registerFromNib(of: BalancesSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+        collectionView.delegate = nil
+        collectionView.dataSource = nil
+        collectionView.backgroundColor = .white
 
-        dataSource.configureCell = { _, tableView, indexPath, currencyInfo in
-            let cell: BalanceCell = tableView.dequeueReusableCell(for: indexPath)
+        guard let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            fatalError("Invalid collection view settings")
+        }
+        layout.headerReferenceSize = CGSize(width: 0, height: BalancesSectionHeaderView.height)
+        layout.sectionHeadersPinToVisibleBounds = true
+
+        dataSource.configureCell = { _, collectionView, indexPath, currencyInfo in
+            let cell: BalanceCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.update(currencyInfo: currencyInfo)
             return cell
         }
 
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            let data = dataSource.sectionModels[index]
+        dataSource.supplementaryViewFactory = { dataSource, collectionView, kind, indexPath in
+            guard kind == UICollectionElementKindSectionHeader else {
+                fatalError("Unexpected supplementaryView kind: \(kind)")
+            }
+
+            let data = dataSource.sectionModels[indexPath.section]
             let dateString = DateFormatter.default.string(from: data.date)
             let usdtAssets = NumberFormatter.currency.string(from: NSNumber(value: data.usdtAssets)) ?? ""
             let btcAssets = NumberFormatter.currency.string(from: NSNumber(value: data.btcAssets)) ?? ""
 
-            return "\(dateString) - \(btcAssets) / $\(usdtAssets)"
+            let view: BalancesSectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath)
+            view.titleLabel.text = "\(dateString) - \(btcAssets) / $\(usdtAssets)"
+
+            return view
         }
 
         presenter.balanceData
-            .drive(tableView.rx.items(dataSource: dataSource))
+            .drive(collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
         Driver.of(presenter.balanceData.map { _ in false }, presenter.errors.map { _ in false })
@@ -88,5 +106,42 @@ final class BalancesViewController: UITableViewController, BalancesViewProtocol 
                 Whisper.show(whisper: message, to: navigationController)
             })
             .disposed(by: disposeBag)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateCellSizes()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        updateCellSizes(viewWidth: size.width)
+    }
+
+    func updateCellSizes(viewWidth: CGFloat? = nil) {
+        guard let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+
+        let numberOfGridsPerRow = traitCollection.horizontalSizeClass == .regular ? 3 : 1
+        let space: CGFloat = 1.0
+        let inset = UIEdgeInsets(top: space, left: space, bottom: space, right: space)
+
+        var length = viewWidth ?? view.bounds.width
+        length -= space * CGFloat(numberOfGridsPerRow - 1)
+        length -= inset.left + inset.right
+
+        let side = length / CGFloat(numberOfGridsPerRow)
+        guard side > 0.0 else {
+            return
+        }
+
+        layout.itemSize = BalanceCell.cellSize(forWidth: side)
+        layout.minimumLineSpacing = space
+        layout.minimumInteritemSpacing = space
+        layout.sectionInset = inset
+        layout.invalidateLayout()
     }
 }
