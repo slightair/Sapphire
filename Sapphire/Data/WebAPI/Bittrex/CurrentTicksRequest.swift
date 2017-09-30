@@ -12,7 +12,7 @@ extension BittrexAPI {
         let method: HTTPMethod = .get
         let path: String = "/v2.0/pub/market/getticks"
 
-        var queryParameters: [String : Any]? {
+        var queryParameters: [String: Any]? {
             return [
                 "marketName": market,
                 "tickInterval": tickInterval.rawValue,

@@ -14,7 +14,7 @@ extension BittrexAPI {
             self.market = market
         }
 
-        var queryParameters: [String : Any]? {
+        var queryParameters: [String: Any]? {
             var params = defaultQueryParameters
             if let market = market {
                 params["market"] = market

@@ -26,7 +26,7 @@ final class MarketDetailPresenter: MarketDetailPresenterProtocol {
                     .catchError { error in
                         self?.errorSubject.onNext(error)
                         return .empty()
-                }
+                    }
             }
             .asDriver(onErrorJustReturn: .empty)
             .startWith(.empty)

@@ -41,13 +41,13 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-            .merge()
-            .do(onNext: { [weak self] _ in
-                guard let view = self?.navigationController?.view else { return }
-                MBProgressHUD.showAdded(to: view, animated: true)
-            })
-            .bind(to: refreshTriggerSubject)
-            .disposed(by: disposeBag)
+        .merge()
+        .do(onNext: { [weak self] _ in
+            guard let view = self?.navigationController?.view else { return }
+            MBProgressHUD.showAdded(to: view, animated: true)
+        })
+        .bind(to: refreshTriggerSubject)
+        .disposed(by: disposeBag)
 
         tableView.rowHeight = MarketSummaryCell.rowHeight
         tableView.cellLayoutMarginsFollowReadableWidth = false

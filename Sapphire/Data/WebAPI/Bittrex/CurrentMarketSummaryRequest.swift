@@ -11,9 +11,9 @@ extension BittrexAPI {
         let method: HTTPMethod = .get
         let path: String = "/v1.1/public/getmarketsummary"
 
-        var queryParameters: [String : Any]? {
+        var queryParameters: [String: Any]? {
             return [
-                "market": market
+                "market": market,
             ]
         }
     }

@@ -3,7 +3,7 @@ import Charts
 
 class MarketDetailChartCell: UITableViewCell {
     static let numberOfTicks: Int = {
-        return UIScreen.main.traitCollection.horizontalSizeClass == .regular ? 192 : 96
+        UIScreen.main.traitCollection.horizontalSizeClass == .regular ? 192 : 96
     }()
 
     class DateValueFormatter: NSObject, IAxisValueFormatter {

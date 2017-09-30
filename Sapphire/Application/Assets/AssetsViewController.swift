@@ -49,13 +49,13 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
             rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-            .merge()
-            .do(onNext: { [weak self] _ in
-                guard let view = self?.navigationController?.view else { return }
-                MBProgressHUD.showAdded(to: view, animated: true)
-            })
-            .bind(to: refreshTriggerSubject)
-            .disposed(by: disposeBag)
+        .merge()
+        .do(onNext: { [weak self] _ in
+            guard let view = self?.navigationController?.view else { return }
+            MBProgressHUD.showAdded(to: view, animated: true)
+        })
+        .bind(to: refreshTriggerSubject)
+        .disposed(by: disposeBag)
 
         presenter.balanceData
             .map(AssetsViewController.pieChartData)

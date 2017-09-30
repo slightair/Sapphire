@@ -40,13 +40,13 @@ extension MarketDetailData.Section: SectionModelType {
 
     var items: [Item] {
         switch self {
-        case .chart(items: let items):
+        case let .chart(items: items):
             return items
-        case .summary(items: let items):
+        case let .summary(items: items):
             return items
-        case .openOrders(items: let items):
+        case let .openOrders(items: items):
             return items
-        case .orderHistory(items: let items):
+        case let .orderHistory(items: items):
             return items
         }
     }

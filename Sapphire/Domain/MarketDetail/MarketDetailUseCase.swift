@@ -16,7 +16,7 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
             bittrexRepository.fetchOrderHistory(market: market),
             bittrexRepository.fetchCurrencies()
         )
-            .map(MarketDetailUseCase.translate)
+        .map(MarketDetailUseCase.translate)
     }
 
     static func translate(chart: Chart, marketSummary: MarketSummary, openOrders: [Order], orderHistory: [Order], currencies: [Currency]) -> MarketDetailData {
