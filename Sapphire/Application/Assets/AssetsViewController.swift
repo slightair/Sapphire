@@ -10,7 +10,7 @@ import MBProgressHUD
 final class AssetsViewController: UIViewController, AssetsViewProtocol {
     private var presenter: AssetsPresenterProtocol!
 
-    fileprivate let refreshTriggerSubject = PublishSubject<Void>()
+    private let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }

@@ -8,7 +8,7 @@ import MBProgressHUD
 final class MarketDetailViewController: UITableViewController, MarketDetailViewProtocol {
     private var presenter: MarketDetailPresenterProtocol!
 
-    fileprivate let refreshTriggerSubject = PublishSubject<Void>()
+    private let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }

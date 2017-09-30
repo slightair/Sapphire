@@ -9,12 +9,12 @@ import MBProgressHUD
 final class OrdersViewController: UITableViewController, OrdersViewProtocol {
     private var presenter: OrdersPresenterProtocol!
 
-    fileprivate let refreshTriggerSubject = PublishSubject<Void>()
+    private let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    fileprivate let selectedMarketSubject = PublishSubject<String>()
+    private let selectedMarketSubject = PublishSubject<String>()
     var selectedMarket: Driver<String> {
         return selectedMarketSubject.asDriver(onErrorRecover: { _ in .never() })
     }

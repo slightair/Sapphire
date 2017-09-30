@@ -10,7 +10,7 @@ import MBProgressHUD
 final class BalancesViewController: UICollectionViewController, BalancesViewProtocol {
     private var presenter: BalancesPresenterProtocol!
 
-    fileprivate let refreshTriggerSubject = PublishSubject<Void>()
+    private let refreshTriggerSubject = PublishSubject<Void>()
     var refreshTrigger: Driver<Void> {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
