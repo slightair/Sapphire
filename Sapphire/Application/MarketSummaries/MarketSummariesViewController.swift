@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import Whisper
+import MBProgressHUD
 
 final class MarketSummariesViewController: UITableViewController, MarketSummariesViewProtocol {
     private var presenter: MarketSummariesPresenterProtocol!
@@ -40,9 +41,13 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-        .merge()
-        .bind(to: refreshTriggerSubject)
-        .disposed(by: disposeBag)
+            .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.showAdded(to: view, animated: true)
+            })
+            .bind(to: refreshTriggerSubject)
+            .disposed(by: disposeBag)
 
         tableView.rowHeight = MarketSummaryCell.rowHeight
         tableView.cellLayoutMarginsFollowReadableWidth = false
@@ -72,6 +77,10 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
 
         Driver.of(presenter.marketSummaryData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.hide(for: view, animated: true)
+            })
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 

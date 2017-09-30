@@ -5,6 +5,7 @@ import ChameleonFramework
 import FontAwesome_swift
 import Whisper
 import Charts
+import MBProgressHUD
 
 final class AssetsViewController: UIViewController, AssetsViewProtocol {
     private var presenter: AssetsPresenterProtocol!
@@ -48,14 +49,26 @@ final class AssetsViewController: UIViewController, AssetsViewProtocol {
             rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-        .merge()
-        .bind(to: refreshTriggerSubject)
-        .disposed(by: disposeBag)
+            .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.showAdded(to: view, animated: true)
+            })
+            .bind(to: refreshTriggerSubject)
+            .disposed(by: disposeBag)
 
         presenter.balanceData
             .map(AssetsViewController.pieChartData)
             .drive(onNext: { [weak self] data in
                 self?.chartView.data = data
+            })
+            .disposed(by: disposeBag)
+
+        Driver.of(presenter.balanceData.map { _ in false }, presenter.errors.map { _ in false })
+            .merge()
+            .drive(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.hide(for: view, animated: true)
             })
             .disposed(by: disposeBag)
 

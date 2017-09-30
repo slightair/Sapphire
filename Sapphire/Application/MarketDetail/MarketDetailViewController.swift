@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import Whisper
+import MBProgressHUD
 
 final class MarketDetailViewController: UITableViewController, MarketDetailViewProtocol {
     private var presenter: MarketDetailPresenterProtocol!
@@ -33,9 +34,13 @@ final class MarketDetailViewController: UITableViewController, MarketDetailViewP
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-        .merge()
-        .bind(to: refreshTriggerSubject)
-        .disposed(by: disposeBag)
+            .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.showAdded(to: view, animated: true)
+            })
+            .bind(to: refreshTriggerSubject)
+            .disposed(by: disposeBag)
 
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.registerFromNib(of: MarketSummaryCell.self)
@@ -79,6 +84,10 @@ final class MarketDetailViewController: UITableViewController, MarketDetailViewP
 
         Driver.of(presenter.marketDetailData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.hide(for: view, animated: true)
+            })
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 

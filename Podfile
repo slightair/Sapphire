@@ -12,6 +12,7 @@ target 'Sapphire' do
   pod 'FontAwesome.swift'
   pod 'Whisper'
   pod 'Charts'
+  pod 'MBProgressHUD'
 
   post_install do |installer|
     swift3_pods = %w(FontAwesome.swift Whisper RxSwift RxCocoa RxDataSources Charts)

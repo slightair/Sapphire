@@ -5,6 +5,7 @@ import RxDataSources
 import ChameleonFramework
 import FontAwesome_swift
 import Whisper
+import MBProgressHUD
 
 final class BalancesViewController: UICollectionViewController, BalancesViewProtocol {
     private var presenter: BalancesPresenterProtocol!
@@ -52,9 +53,13 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-        .merge()
-        .bind(to: refreshTriggerSubject)
-        .disposed(by: disposeBag)
+            .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.showAdded(to: view, animated: true)
+            })
+            .bind(to: refreshTriggerSubject)
+            .disposed(by: disposeBag)
 
         collectionView.registerFromNib(of: BalanceCell.self)
         collectionView.registerFromNib(of: BalancesSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
@@ -96,6 +101,10 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
 
         Driver.of(presenter.balanceData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.hide(for: view, animated: true)
+            })
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 

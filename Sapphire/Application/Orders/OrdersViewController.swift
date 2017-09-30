@@ -4,6 +4,7 @@ import RxCocoa
 import RxDataSources
 import FontAwesome_swift
 import Whisper
+import MBProgressHUD
 
 final class OrdersViewController: UITableViewController, OrdersViewProtocol {
     private var presenter: OrdersPresenterProtocol!
@@ -47,9 +48,13 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
             refreshButton.rx.tap.map { _ in }
         )
-        .merge()
-        .bind(to: refreshTriggerSubject)
-        .disposed(by: disposeBag)
+            .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.showAdded(to: view, animated: true)
+            })
+            .bind(to: refreshTriggerSubject)
+            .disposed(by: disposeBag)
 
         tableView.rowHeight = OrderCell.rowHeight
         tableView.cellLayoutMarginsFollowReadableWidth = false
@@ -74,6 +79,10 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
 
         Driver.of(presenter.orderData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
+            .do(onNext: { [weak self] _ in
+                guard let view = self?.navigationController?.view else { return }
+                MBProgressHUD.hide(for: view, animated: true)
+            })
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
