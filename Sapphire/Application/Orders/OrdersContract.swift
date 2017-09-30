@@ -4,6 +4,7 @@ import RxCocoa
 
 protocol OrdersViewProtocol: class {
     var refreshTrigger: Driver<Void> { get }
+    var selectedMarket: Driver<String> { get }
 }
 
 protocol OrdersPresenterProtocol: class {
@@ -16,4 +17,5 @@ protocol OrdersInteractorProtocol: class {
 }
 
 protocol OrdersWireframeProtocol: class {
+    func presentMarketDetailView(market: String)
 }

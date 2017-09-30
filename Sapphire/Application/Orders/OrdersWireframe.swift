@@ -6,4 +6,9 @@ final class OrdersWireframe: OrdersWireframeProtocol {
     init(viewController: OrdersViewController) {
         self.viewController = viewController
     }
+
+    func presentMarketDetailView(market: String) {
+        let marketDetailViewController = MarketDetailViewBuilder.build(market: market)
+        viewController.navigationController?.pushViewController(marketDetailViewController, animated: true)
+    }
 }

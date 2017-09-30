@@ -14,6 +14,8 @@ final class OrdersPresenter: OrdersPresenterProtocol {
         return errorSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
+    let disposeBag = DisposeBag()
+
     init(view: OrdersViewProtocol, interactor: OrdersInteractorProtocol, wireframe: OrdersWireframeProtocol) {
         self.view = view
         self.interactor = interactor
@@ -30,5 +32,9 @@ final class OrdersPresenter: OrdersPresenterProtocol {
             }
             .asDriver(onErrorJustReturn: [])
             .startWith([])
+
+        view.selectedMarket
+            .drive(onNext: wireframe.presentMarketDetailView)
+            .disposed(by: disposeBag)
     }
 }

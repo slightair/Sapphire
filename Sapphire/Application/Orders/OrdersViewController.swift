@@ -14,6 +14,11 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
+    fileprivate let selectedMarketSubject = PublishSubject<String>()
+    var selectedMarket: Driver<String> {
+        return selectedMarketSubject.asDriver(onErrorRecover: { _ in .never() })
+    }
+
     private var dataSource = RxTableViewSectionedReloadDataSource<OrderData>()
     private let disposeBag = DisposeBag()
 
@@ -92,6 +97,11 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
                 let message = Message(title: error.localizedDescription, textColor: .flatWhite, backgroundColor: .flatRed)
                 Whisper.show(whisper: message, to: navigationController)
             })
+            .disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(OrderData.OrderInfo.self)
+            .map { $0.exchange }
+            .bind(to: selectedMarketSubject)
             .disposed(by: disposeBag)
     }
 }
