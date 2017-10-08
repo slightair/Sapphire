@@ -11,11 +11,12 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
     func fetchCurrentMarketSummaryData() -> Single<[MarketSummaryData]> {
         return Single.zip(
             bittrexRepository.fetchCurrentMarketSummaries(),
-            bittrexRepository.fetchCurrencies()
+            bittrexRepository.fetchCurrencies(),
+            bittrexRepository.fetchMarkets()
         ).map(MarketSummariesUseCase.translate)
     }
 
-    static func translate(marketSummaries: [MarketSummary], currencies: [Currency]) -> [MarketSummaryData] {
+    static func translate(marketSummaries: [MarketSummary], currencies: [Currency], markets: [Market]) -> [MarketSummaryData] {
         var summaries: [String: [MarketSummaryData.CurrencyInfo]] = [:]
 
         for marketSummary in marketSummaries {
@@ -24,6 +25,7 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
             let group = currencyPair[0]
             let currency = currencyPair[1]
             let currencyLongName = currencies.first(where: { $0.currency == currency })?.currencyLong ?? currency
+            let logoImageURL = markets.first(where: { $0.name == marketSummary.marketName })?.logoImageURL
 
             let scale = group == "BTC" ? Bitcoin.satoshi : 1
 
@@ -35,7 +37,8 @@ struct MarketSummariesUseCase: MarketSummariesUseCaseProtocol {
                 high: marketSummary.high * scale,
                 low: marketSummary.low * scale,
                 baseVolume: marketSummary.baseVolume,
-                change: (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
+                change: (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay,
+                logoImageURL: logoImageURL
             )
 
             if let array = summaries[group] {

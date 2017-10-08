@@ -1,6 +1,7 @@
 import UIKit
 import ChameleonFramework
 import FontAwesome_swift
+import Kingfisher
 
 class MarketSummaryCell: UITableViewCell {
     static let rowHeight: CGFloat = 36
@@ -14,7 +15,7 @@ class MarketSummaryCell: UITableViewCell {
     @IBOutlet weak var changeLabel: UILabel!
 
     func update(currencyInfo: MarketSummaryData.CurrencyInfo) {
-        thumbnailImageView.image = UIImage(named: currencyInfo.name) ?? MarketSummaryCell.placeholderImage
+        thumbnailImageView.kf.setImage(with: currencyInfo.logoImageURL, placeholder: MarketSummaryCell.placeholderImage)
         currencyNameLabel.text = currencyInfo.longName
 
         volumeLabel.text = NumberFormatter.currency.string(from: NSNumber(value: currencyInfo.baseVolume))

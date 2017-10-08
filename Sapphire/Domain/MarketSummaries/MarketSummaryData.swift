@@ -11,6 +11,7 @@ struct MarketSummaryData {
         let low: Double
         let baseVolume: Double
         let change: Double
+        let logoImageURL: URL?
     }
 
     var date: Date

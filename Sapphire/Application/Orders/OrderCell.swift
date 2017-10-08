@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class OrderCell: UITableViewCell {
     static let rowHeight: CGFloat = 60
@@ -14,7 +15,7 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
 
     func update(orderInfo: OrderData.OrderInfo) {
-        thumbnailImageView.image = UIImage(named: orderInfo.currency) ?? OrderCell.placeholderImage
+        thumbnailImageView.kf.setImage(with: orderInfo.logoImageURL, placeholder: OrderCell.placeholderImage)
         exchangeLabel.text = orderInfo.exchange
         orderTypeLabel.text = orderInfo.orderType
         limitLabel.text = "\(NumberFormatter.currencyFullBTC.string(from: NSNumber(value: orderInfo.limit)) ?? "") \(orderInfo.baseCurrency)"

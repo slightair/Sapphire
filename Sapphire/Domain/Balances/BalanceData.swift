@@ -12,6 +12,7 @@ struct BalanceData {
         let change: Double?
         let estimatedBTCValue: Double
         let chart: Chart
+        let logoImageURL: URL?
     }
 
     var date: Date

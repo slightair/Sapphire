@@ -22,11 +22,12 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                     ).asSingle()
                 },
             bittrexRepository.fetchCurrentMarketSummaries(),
-            bittrexRepository.fetchCurrencies()
+            bittrexRepository.fetchCurrencies(),
+            bittrexRepository.fetchMarkets()
         ).map(BalancesUseCase.translate)
     }
 
-    static func translate(balances: [(Balance, Chart)], marketSummaries: [MarketSummary], currencies: [Currency]) -> BalanceData {
+    static func translate(balances: [(Balance, Chart)], marketSummaries: [MarketSummary], currencies: [Currency], markets: [Market]) -> BalanceData {
         let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" })
 
         var infoList: [BalanceData.CurrencyInfo] = balances.map { balance, chart in
@@ -35,8 +36,10 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
             var high: Double?
             var low: Double?
             var change: Double?
+            let marketName: String
 
             if balance.currency == "BTC" {
+                marketName = "USDT-BTC"
                 estimatedBTCValue = balance.balance * Bitcoin.satoshi
                 if let marketSummary = usdtBTCMarket {
                     last = marketSummary.last
@@ -45,7 +48,7 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                     change = (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
                 }
             } else {
-                let marketName = "BTC-\(balance.currency)"
+                marketName = "BTC-\(balance.currency)"
                 if let marketSummary = marketSummaries.first(where: { $0.marketName == marketName }) {
                     estimatedBTCValue = balance.balance * marketSummary.last * Bitcoin.satoshi
                     last = marketSummary.last * Bitcoin.satoshi
@@ -56,7 +59,10 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                     estimatedBTCValue = 0
                 }
             }
+
             let longName = currencies.first(where: { $0.currency == balance.currency })?.currencyLong ?? balance.currency
+            let logoImageURL = markets.first(where: { $0.name == marketName })?.logoImageURL
+
             return BalanceData.CurrencyInfo(name: balance.currency,
                                             longName: longName,
                                             balance: balance.balance,
@@ -65,7 +71,9 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
                                             low: low,
                                             change: change,
                                             estimatedBTCValue: estimatedBTCValue,
-                                            chart: chart)
+                                            chart: chart,
+                                            logoImageURL: logoImageURL
+            )
         }
         .filter { $0.balance > 0 }
         .sorted { a, b in a.estimatedBTCValue > b.estimatedBTCValue }

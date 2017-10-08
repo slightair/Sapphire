@@ -21,7 +21,7 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
     }
 
     static func translate(chart: Chart, marketSummary: MarketSummary, openOrders: [Order], orderHistory: [Order], currencies: [Currency], markets: [Market]) -> MarketDetailData {
-        let currencyInfo = MarketDetailUseCase.currencyInfo(from: marketSummary, currencies: currencies)
+        let currencyInfo = MarketDetailUseCase.currencyInfo(from: marketSummary, currencies: currencies, markets: markets)
         var sections: [MarketDetailData.Section] = [
             .chart(items: [.chartSectionItem(chart: chart)]),
             .summary(items: [.summarySectionItem(currencyInfo: currencyInfo)]),
@@ -57,12 +57,13 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
         return MarketDetailData(date: Date(), sections: sections)
     }
 
-    static func currencyInfo(from marketSummary: MarketSummary, currencies: [Currency]) -> MarketSummaryData.CurrencyInfo {
+    static func currencyInfo(from marketSummary: MarketSummary, currencies: [Currency], markets: [Market]) -> MarketSummaryData.CurrencyInfo {
         let currencyPair = marketSummary.marketName.components(separatedBy: "-")
 
         let group = currencyPair[0]
         let currency = currencyPair[1]
         let currencyLongName = currencies.first(where: { $0.currency == currency })?.currencyLong ?? currency
+        let logoImageURL = markets.first(where: { $0.name == marketSummary.marketName })?.logoImageURL
 
         let scale = group == "BTC" ? Bitcoin.satoshi : 1
 
@@ -74,7 +75,8 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
             high: marketSummary.high * scale,
             low: marketSummary.low * scale,
             baseVolume: marketSummary.baseVolume,
-            change: (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay
+            change: (marketSummary.last - marketSummary.prevDay) / marketSummary.prevDay,
+            logoImageURL: logoImageURL
         )
     }
 }

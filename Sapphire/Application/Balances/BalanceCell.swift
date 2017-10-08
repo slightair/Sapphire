@@ -1,6 +1,7 @@
 import UIKit
 import Charts
 import ChameleonFramework
+import Kingfisher
 
 class BalanceCell: UICollectionViewCell {
     static let numberOfTicks = 96
@@ -64,7 +65,7 @@ class BalanceCell: UICollectionViewCell {
     }
 
     func update(currencyInfo: BalanceData.CurrencyInfo) {
-        thumbnailImageView.image = UIImage(named: currencyInfo.name) ?? BalanceCell.placeholderImage
+        thumbnailImageView.kf.setImage(with: currencyInfo.logoImageURL, placeholder: BalanceCell.placeholderImage)
         currencyNameLabel.text = currencyInfo.longName
         currencyBalanceLabel.text = NumberFormatter.currency.string(from: NSNumber(value: currencyInfo.balance))
         estimatedBTCValueLabel.text = NumberFormatter.decimal.string(from: NSNumber(value: currencyInfo.estimatedBTCValue))
