@@ -12,6 +12,7 @@ protocol BittrexDataStoreProtocol {
     func fetchOpenOrders() -> Single<[Order]>
     func fetchOpenOrders(market: String) -> Single<[Order]>
     func fetchCurrentChart(market: String, tickInterval: BittrexTickInterval) -> Single<Chart>
+    func fetchMarkets() -> Single<[Market]>
 }
 
 final class BittrexDataStore: BittrexDataStoreProtocol {
@@ -19,6 +20,7 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
 
     let session = Session.shared
     var currencies: [Currency]?
+    var markets: [Market]?
 
     func fetchCurrentBalances() -> PrimitiveSequence<SingleTrait, [Balance]> {
         let request = BittrexAPI.CurrentBalancesRequest()
@@ -72,5 +74,17 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
         let request = BittrexAPI.CurrentTicksRequest(market: market, tickInterval: tickInterval)
         return session.rx.response(request)
             .map { Chart(market: market, tickInterval: tickInterval, ticks: $0) }
+    }
+
+    func fetchMarkets() -> Single<[Market]> {
+        if let markets = markets {
+            return .just(markets)
+        }
+
+        let request = BittrexAPI.MarketsRequest()
+        return session.rx.response(request)
+            .do(onNext: { [weak self] markets in
+                self?.markets = markets
+            })
     }
 }

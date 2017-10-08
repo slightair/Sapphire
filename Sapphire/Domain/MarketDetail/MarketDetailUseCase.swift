@@ -14,12 +14,13 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
             bittrexRepository.fetchCurrentMarketSummary(market: market),
             bittrexRepository.fetchOpenOrders(market: market),
             bittrexRepository.fetchOrderHistory(market: market),
-            bittrexRepository.fetchCurrencies()
+            bittrexRepository.fetchCurrencies(),
+            bittrexRepository.fetchMarkets()
         )
         .map(MarketDetailUseCase.translate)
     }
 
-    static func translate(chart: Chart, marketSummary: MarketSummary, openOrders: [Order], orderHistory: [Order], currencies: [Currency]) -> MarketDetailData {
+    static func translate(chart: Chart, marketSummary: MarketSummary, openOrders: [Order], orderHistory: [Order], currencies: [Currency], markets: [Market]) -> MarketDetailData {
         let currencyInfo = MarketDetailUseCase.currencyInfo(from: marketSummary, currencies: currencies)
         var sections: [MarketDetailData.Section] = [
             .chart(items: [.chartSectionItem(chart: chart)]),
@@ -27,6 +28,13 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
         ]
 
         func createOrderInfo(_ order: Order) -> OrderData.OrderInfo {
+            let logoImageURL: URL?
+            if let market = markets.first(where: { $0.name == order.exchange }) {
+                logoImageURL = market.logoImageURL
+            } else {
+                logoImageURL = nil
+            }
+
             return OrderData.OrderInfo(
                 exchange: order.exchange,
                 orderType: order.orderType,
@@ -34,7 +42,8 @@ struct MarketDetailUseCase: MarketDetailUseCaseProtocol {
                 last: nil,
                 quantity: order.quantity,
                 opened: order.opened,
-                closed: order.closed)
+                closed: order.closed,
+                logoImageURL: logoImageURL)
         }
 
         if openOrders.count > 0 {

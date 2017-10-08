@@ -50,6 +50,8 @@
 		579B234C765E0006581C61DD /* MarketDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00622BB501B10B1AFEF27CD /* MarketDetailPresenter.swift */; };
 		57B0DD511F666CC300652681 /* CurrentMarketSummariesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */; };
 		57B0DD531F666D4600652681 /* MarketSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B0DD521F666D4600652681 /* MarketSummary.swift */; };
+		57BCE49E1F89DA390007660F /* MarketsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BCE49D1F89DA390007660F /* MarketsRequest.swift */; };
+		57BCE4A01F89DA750007660F /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BCE49F1F89DA750007660F /* Market.swift */; };
 		57E4F6151F73D4BB00D0759C /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4F6141F73D4BB00D0759C /* UICollectionView+Extensions.swift */; };
 		57E4F6181F76A4CE00D0759C /* BalancesSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4F6161F76A4CE00D0759C /* BalancesSectionHeaderView.swift */; };
 		57E4F6191F76A4CE00D0759C /* BalancesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */; };
@@ -133,6 +135,8 @@
 		5798FC711F619431005555BE /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarketSummariesRequest.swift; sourceTree = "<group>"; };
 		57B0DD521F666D4600652681 /* MarketSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummary.swift; sourceTree = "<group>"; };
+		57BCE49D1F89DA390007660F /* MarketsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsRequest.swift; sourceTree = "<group>"; };
+		57BCE49F1F89DA750007660F /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		57E4F6141F73D4BB00D0759C /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		57E4F6161F76A4CE00D0759C /* BalancesSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesSectionHeaderView.swift; sourceTree = "<group>"; };
 		57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalancesSectionHeaderView.xib; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				5741E1041F6681C600DC8C52 /* Currency.swift */,
 				5738BE8F1F69458700DFDAF3 /* Order.swift */,
 				57EEF3781F6A9F2800D9DC8E /* Chart.swift */,
+				57BCE49F1F89DA750007660F /* Market.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				5738BE8D1F6944EC00DFDAF3 /* OrderHistoryRequest.swift */,
 				5738BE911F69498400DFDAF3 /* OpenOrdersRequest.swift */,
 				57EEF37A1F6AB97200D9DC8E /* CurrentTicksRequest.swift */,
+				57BCE49D1F89DA390007660F /* MarketsRequest.swift */,
 			);
 			path = Bittrex;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				5741E1071F66848A00DC8C52 /* CurrenciesRequest.swift in Sources */,
 				5738BE9A1F6A4A3C00DFDAF3 /* OrderCell.swift in Sources */,
 				573A1C861F5EED72007523EB /* Session+Debug.swift in Sources */,
+				57BCE49E1F89DA390007660F /* MarketsRequest.swift in Sources */,
 				5741E1051F6681C600DC8C52 /* Currency.swift in Sources */,
 				5798FC721F619431005555BE /* UITableView+Extensions.swift in Sources */,
 				5790D3D81F55A9CA0032B5A6 /* StartupViewController.swift in Sources */,
@@ -659,6 +666,7 @@
 				FD8D7652EFE90476DE364A46 /* AssetsContract.swift in Sources */,
 				F76015AAA12F3C740AC3295A /* AssetsInteractor.swift in Sources */,
 				554B6FE60A86B01DB859A8E9 /* AssetsPresenter.swift in Sources */,
+				57BCE4A01F89DA750007660F /* Market.swift in Sources */,
 				65CAF5203893EDEA7C519D7D /* AssetsViewBuilder.swift in Sources */,
 				D6A09D7ABBCFA2AEF10CDE3D /* AssetsViewController.swift in Sources */,
 				D212B2C1C89B50657DC16D25 /* AssetsWireframe.swift in Sources */,

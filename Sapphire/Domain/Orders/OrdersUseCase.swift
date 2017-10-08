@@ -12,11 +12,12 @@ struct OrdersUseCase: OrdersUseCaseProtocol {
         return Single.zip(
             bittrexRepository.fetchOpenOrders(),
             bittrexRepository.fetchOrderHistory(),
-            bittrexRepository.fetchCurrentMarketSummaries()
+            bittrexRepository.fetchCurrentMarketSummaries(),
+            bittrexRepository.fetchMarkets()
         ).map(OrdersUseCase.translate)
     }
 
-    static func translate(openOrders: [Order], orderHistory: [Order], marketSummaries: [MarketSummary]) -> [OrderData] {
+    static func translate(openOrders: [Order], orderHistory: [Order], marketSummaries: [MarketSummary], markets: [Market]) -> [OrderData] {
         let date = Date()
 
         let openOrderItems: [OrderData.OrderInfo] = openOrders.map { order in
@@ -27,6 +28,13 @@ struct OrdersUseCase: OrdersUseCaseProtocol {
                 last = nil
             }
 
+            let logoImageURL: URL?
+            if let market = markets.first(where: { $0.name == order.exchange }) {
+                logoImageURL = market.logoImageURL
+            } else {
+                logoImageURL = nil
+            }
+
             return OrderData.OrderInfo(
                 exchange: order.exchange,
                 orderType: order.orderType,
@@ -34,17 +42,26 @@ struct OrdersUseCase: OrdersUseCaseProtocol {
                 last: last,
                 quantity: order.quantity,
                 opened: order.opened,
-                closed: order.closed)
+                closed: order.closed,
+                logoImageURL: logoImageURL)
         }
-        let orderHistoryItems: [OrderData.OrderInfo] = orderHistory.map {
-            OrderData.OrderInfo(
-                exchange: $0.exchange,
-                orderType: $0.orderType,
-                limit: $0.limit,
+        let orderHistoryItems: [OrderData.OrderInfo] = orderHistory.map { order in
+            let logoImageURL: URL?
+            if let market = markets.first(where: { $0.name == order.exchange }) {
+                logoImageURL = market.logoImageURL
+            } else {
+                logoImageURL = nil
+            }
+
+            return OrderData.OrderInfo(
+                exchange: order.exchange,
+                orderType: order.orderType,
+                limit: order.limit,
                 last: nil,
-                quantity: $0.quantity,
-                opened: $0.opened,
-                closed: $0.closed)
+                quantity: order.quantity,
+                opened: order.opened,
+                closed: order.closed,
+                logoImageURL: logoImageURL)
         }
 
         return [

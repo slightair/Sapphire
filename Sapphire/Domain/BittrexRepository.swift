@@ -19,6 +19,7 @@ protocol BittrexRepositoryProtocol {
     func fetchOpenOrders() -> Single<[Order]>
     func fetchOpenOrders(market: String) -> Single<[Order]>
     func fetchCurrentChart(market: String, tickInterval: BittrexTickInterval) -> Single<Chart>
+    func fetchMarkets() -> Single<[Market]>
 }
 
 struct BittrexRepository: BittrexRepositoryProtocol {
@@ -58,5 +59,9 @@ struct BittrexRepository: BittrexRepositoryProtocol {
 
     func fetchCurrentChart(market: String, tickInterval: BittrexTickInterval) -> Single<Chart> {
         return dataStore.fetchCurrentChart(market: market, tickInterval: tickInterval)
+    }
+
+    func fetchMarkets() -> Single<[Market]> {
+        return dataStore.fetchMarkets()
     }
 }

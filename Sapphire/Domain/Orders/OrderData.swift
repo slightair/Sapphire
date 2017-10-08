@@ -10,6 +10,7 @@ struct OrderData {
         let quantity: Double
         let opened: Date
         let closed: Date?
+        let logoImageURL: URL?
 
         var baseCurrency: String {
             let currencyPair = exchange.components(separatedBy: "-")
