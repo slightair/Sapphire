@@ -130,9 +130,9 @@ class BalanceCell: UICollectionViewCell {
     }
 
     static func cellSize(forWidth width: CGFloat) -> CGSize {
-        let chartHeight: CGFloat = (width - 16 * 2 - 8 * 2) * (9 / 16)
+        let chartHeight: CGFloat = (width - 8 * 2 - 8 * 2) * (7 / 16)
         let summaryHeight: CGFloat = 48
-        let cellHeight = 8 * 2 + 16 * 2 + chartHeight + summaryHeight
+        let cellHeight = 8 * 2 + 4 * 2 + chartHeight + summaryHeight
 
         return CGSize(width: width, height: cellHeight)
     }

@@ -66,6 +66,7 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
         collectionView.delegate = nil
         collectionView.dataSource = nil
         collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
 
         guard let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
             fatalError("Invalid collection view settings")
