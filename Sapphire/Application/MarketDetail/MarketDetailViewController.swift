@@ -13,7 +13,6 @@ final class MarketDetailViewController: UITableViewController, MarketDetailViewP
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    private var dataSource = RxTableViewSectionedReloadDataSource<MarketDetailData.Section>()
     private let disposeBag = DisposeBag()
 
     func inject(presenter: MarketDetailPresenterProtocol) {
@@ -49,33 +48,34 @@ final class MarketDetailViewController: UITableViewController, MarketDetailViewP
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { dataSource, tableView, indexPath, _ in
-            let data = dataSource[indexPath]
-            switch data {
-            case let .chartSectionItem(chart):
-                let cell: MarketDetailChartCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(chart: chart)
-                return cell
-            case let .summarySectionItem(currencyInfo):
-                let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(currencyInfo: currencyInfo)
-                cell.selectionStyle = .none
-                return cell
-            case let .openOrdersSectionItem(orderInfo):
-                let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(orderInfo: orderInfo)
-                return cell
-            case let .orderHistorySectionItem(orderInfo):
-                let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.update(orderInfo: orderInfo)
-                return cell
+        let dataSource = RxTableViewSectionedReloadDataSource<MarketDetailData.Section>(
+            configureCell: { dataSource, tableView, indexPath, _ in
+                let data = dataSource[indexPath]
+                switch data {
+                case let .chartSectionItem(chart):
+                    let cell: MarketDetailChartCell = tableView.dequeueReusableCell(for: indexPath)
+                    cell.update(chart: chart)
+                    return cell
+                case let .summarySectionItem(currencyInfo):
+                    let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
+                    cell.update(currencyInfo: currencyInfo)
+                    cell.selectionStyle = .none
+                    return cell
+                case let .openOrdersSectionItem(orderInfo):
+                    let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
+                    cell.update(orderInfo: orderInfo)
+                    return cell
+                case let .orderHistorySectionItem(orderInfo):
+                    let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
+                    cell.update(orderInfo: orderInfo)
+                    return cell
+                }
+            },
+            titleForHeaderInSection: { dataSource, index in
+                let data = dataSource.sectionModels[index]
+                return data.title
             }
-        }
-
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            let data = dataSource.sectionModels[index]
-            return data.title
-        }
+        )
 
         presenter.marketDetailData
             .map { $0.sections }

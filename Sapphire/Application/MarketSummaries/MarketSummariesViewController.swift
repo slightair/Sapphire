@@ -18,7 +18,6 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         return selectedMarketSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    private var dataSource = RxTableViewSectionedReloadDataSource<MarketSummaryData>()
     private let disposeBag = DisposeBag()
 
     func inject(presenter: MarketSummariesPresenterProtocol) {
@@ -55,21 +54,21 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { _, tableView, indexPath, currencyInfo in
-            let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.update(currencyInfo: currencyInfo)
-            return cell
-        }
-
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            let data = dataSource.sectionModels[index]
-            let dateString = DateFormatter.default.string(from: data.date)
-            return "\(data.marketGroup) - \(dateString)"
-        }
-
-        dataSource.sectionIndexTitles = { dataSource in
-            dataSource.sectionModels.flatMap { $0.marketGroup.first }.map { String($0) }
-        }
+        let dataSource = RxTableViewSectionedReloadDataSource<MarketSummaryData>(
+            configureCell: { _, tableView, indexPath, currencyInfo in
+                let cell: MarketSummaryCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(currencyInfo: currencyInfo)
+                return cell
+            },
+            titleForHeaderInSection: { dataSource, index in
+                let data = dataSource.sectionModels[index]
+                let dateString = DateFormatter.default.string(from: data.date)
+                return "\(data.marketGroup) - \(dateString)"
+            },
+            sectionIndexTitles: { dataSource in
+                dataSource.sectionModels.flatMap { $0.marketGroup.first }.map { String($0) }
+            }
+        )
 
         presenter.marketSummaryData
             .drive(tableView.rx.items(dataSource: dataSource))

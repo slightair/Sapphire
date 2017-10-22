@@ -19,7 +19,6 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
         return selectedMarketSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    private var dataSource = RxTableViewSectionedReloadDataSource<OrderData>()
     private let disposeBag = DisposeBag()
 
     func inject(presenter: OrdersPresenterProtocol) {
@@ -67,16 +66,17 @@ final class OrdersViewController: UITableViewController, OrdersViewProtocol {
         tableView.delegate = nil
         tableView.dataSource = nil
 
-        dataSource.configureCell = { _, tableView, indexPath, orderInfo in
-            let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.update(orderInfo: orderInfo)
-            return cell
-        }
-
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            let data = dataSource.sectionModels[index]
-            return data.group
-        }
+        let dataSource = RxTableViewSectionedReloadDataSource<OrderData>(
+            configureCell: { _, tableView, indexPath, orderInfo in
+                let cell: OrderCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.update(orderInfo: orderInfo)
+                return cell
+            },
+            titleForHeaderInSection: { dataSource, index in
+                let data = dataSource.sectionModels[index]
+                return data.group
+            }
+        )
 
         presenter.orderData
             .drive(tableView.rx.items(dataSource: dataSource))

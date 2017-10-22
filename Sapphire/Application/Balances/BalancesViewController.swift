@@ -15,7 +15,6 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
         return refreshTriggerSubject.asDriver(onErrorRecover: { _ in .never() })
     }
 
-    private var dataSource = RxCollectionViewSectionedReloadDataSource<BalanceData>()
     private let disposeBag = DisposeBag()
 
     func inject(presenter: BalancesPresenterProtocol) {
@@ -74,27 +73,28 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
         layout.headerReferenceSize = CGSize(width: 0, height: BalancesSectionHeaderView.height)
         layout.sectionHeadersPinToVisibleBounds = true
 
-        dataSource.configureCell = { _, collectionView, indexPath, currencyInfo in
-            let cell: BalanceCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.update(currencyInfo: currencyInfo)
-            return cell
-        }
+        let dataSource = RxCollectionViewSectionedReloadDataSource<BalanceData>(
+            configureCell: { _, collectionView, indexPath, currencyInfo in
+                let cell: BalanceCell = collectionView.dequeueReusableCell(for: indexPath)
+                cell.update(currencyInfo: currencyInfo)
+                return cell
+            },
+            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+                guard kind == UICollectionElementKindSectionHeader else {
+                    fatalError("Unexpected supplementaryView kind: \(kind)")
+                }
 
-        dataSource.supplementaryViewFactory = { dataSource, collectionView, kind, indexPath in
-            guard kind == UICollectionElementKindSectionHeader else {
-                fatalError("Unexpected supplementaryView kind: \(kind)")
+                let data = dataSource.sectionModels[indexPath.section]
+                let dateString = DateFormatter.default.string(from: data.date)
+                let usdtAssets = NumberFormatter.currency.string(from: NSNumber(value: data.usdtAssets)) ?? ""
+                let btcAssets = NumberFormatter.currency.string(from: NSNumber(value: data.btcAssets)) ?? ""
+
+                let view: BalancesSectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath)
+                view.titleLabel.text = "\(dateString) - \(btcAssets) / $\(usdtAssets)"
+
+                return view
             }
-
-            let data = dataSource.sectionModels[indexPath.section]
-            let dateString = DateFormatter.default.string(from: data.date)
-            let usdtAssets = NumberFormatter.currency.string(from: NSNumber(value: data.usdtAssets)) ?? ""
-            let btcAssets = NumberFormatter.currency.string(from: NSNumber(value: data.btcAssets)) ?? ""
-
-            let view: BalancesSectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath)
-            view.titleLabel.text = "\(dateString) - \(btcAssets) / $\(usdtAssets)"
-
-            return view
-        }
+        )
 
         presenter.balanceData
             .drive(collectionView.rx.items(dataSource: dataSource))
