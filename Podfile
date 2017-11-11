@@ -8,7 +8,7 @@ target 'Sapphire' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'APIKit'
-  pod 'ChameleonFramework/Swift'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'FontAwesome.swift'
   pod 'Whisper'
   pod 'Charts'
@@ -16,7 +16,7 @@ target 'Sapphire' do
   pod 'Kingfisher'
 
   post_install do |installer|
-    swift3_pods = %w(ChameleonFramework FontAwesome.swift Whisper Charts)
+    swift3_pods = %w(FontAwesome.swift Whisper Charts)
 
     installer.pods_project.targets.each do |target|
       if swift3_pods.include?(target.name)
