@@ -5,9 +5,4 @@ struct SecureConfiguration {
         static let accessKey = ""
         static let secretAccessKey = ""
     }
-
-    struct CoinCheck {
-        static let accessKey = ""
-        static let secretAccessKey = ""
-    }
 }

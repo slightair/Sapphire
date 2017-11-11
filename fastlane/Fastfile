@@ -21,8 +21,6 @@ end
 
 desc "Update API Configuration"
 lane :update_api_configuration do
-  coincheck_access_key = ENV['COINCHECK_ACCESS_KEY']
-  coincheck_secret_access_key = ENV['COINCHECK_SECRET_ACCESS_KEY']
   bittrex_access_key = ENV['BITTREX_ACCESS_KEY']
   bittrex_secret_access_key = ENV['BITTREX_SECRET_ACCESS_KEY']
   template = <<EOS
@@ -32,11 +30,6 @@ struct SecureConfiguration {
     struct Bittrex {
         static let accessKey = "#{bittrex_access_key}"
         static let secretAccessKey = "#{bittrex_secret_access_key}"
-    }
-
-    struct CoinCheck {
-        static let accessKey = "#{coincheck_access_key}"
-        static let secretAccessKey = "#{coincheck_secret_access_key}"
     }
 }
 EOS
