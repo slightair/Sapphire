@@ -18,16 +18,5 @@ extension BittrexAPI {
                 "tickInterval": tickInterval.rawValue,
             ]
         }
-
-        func response(from object: Any, urlResponse _: HTTPURLResponse) throws -> Response {
-            guard let data = object as? Data else {
-                throw ResponseError.unexpectedObject(object)
-            }
-
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601noneMilliSec)
-
-            return try decoder.decode(BittrexAPI.Response<Response>.self, from: data).result
-        }
     }
 }
