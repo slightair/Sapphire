@@ -7,7 +7,7 @@ protocol AssetsViewProtocol: class {
 }
 
 protocol AssetsPresenterProtocol: class {
-    var balanceData: Driver<BalanceData> { get }
+    var balanceData: Driver<[BalanceData]> { get }
     var errors: Driver<Error> { get }
 }
 

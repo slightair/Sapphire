@@ -7,7 +7,7 @@ final class AssetsPresenter: AssetsPresenterProtocol {
     private let interactor: AssetsInteractorProtocol
     private let wireframe: AssetsWireframeProtocol
 
-    private(set) var balanceData: Driver<BalanceData> = .empty()
+    private(set) var balanceData: Driver<[BalanceData]> = .empty()
 
     private let errorSubject = PublishSubject<Error>()
     var errors: Driver<Error> {
@@ -28,7 +28,8 @@ final class AssetsPresenter: AssetsPresenterProtocol {
                         return .empty()
                     }
             }
-            .asDriver(onErrorJustReturn: .empty)
-            .startWith(.empty)
+            .map { [$0] }
+            .asDriver(onErrorJustReturn: [])
+            .startWith([])
     }
 }
