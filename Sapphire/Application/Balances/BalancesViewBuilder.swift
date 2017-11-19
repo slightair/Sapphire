@@ -5,7 +5,8 @@ struct BalancesViewBuilder {
         let viewController = BalancesViewController()
         let interactor = BalancesInteractor(
             balancesUseCase: BalancesUseCase(
-                bittrexRepository: BittrexRepository(dataStore: BittrexDataStore.shared)
+                bittrexRepository: BittrexRepository(dataStore: BittrexDataStore.shared),
+                needsChart: true
             )
         )
         let wireframe = BalancesWireframe(viewController: viewController)

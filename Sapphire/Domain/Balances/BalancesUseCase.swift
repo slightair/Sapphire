@@ -7,19 +7,25 @@ protocol BalancesUseCaseProtocol {
 
 struct BalancesUseCase: BalancesUseCaseProtocol {
     let bittrexRepository: BittrexRepositoryProtocol
+    let needsChart: Bool
 
     func fetchCurrentBalanceData() -> Single<BalanceData> {
+        let needsChart = self.needsChart
+
         return Single.zip(
             bittrexRepository.fetchCurrentBalances()
-                .flatMap { balances -> Single<[(Balance, Chart)]> in
-                    Observable.zip(
-                        balances.map { balance -> Observable<(Balance, Chart)> in
-                            let market = balance.currency == "BTC" ? "USDT-BTC" : "BTC-\(balance.currency)"
-                            return self.bittrexRepository.fetchCurrentChart(market: market, tickInterval: .thirtyMin)
-                                .map { (balance, $0) }
-                                .asObservable()
-                        }
-                    ).asSingle()
+                .flatMap { balances -> Single<[(Balance, Chart?)]> in
+                    if needsChart {
+                        return Observable.zip(
+                            balances.map { balance -> Observable<(Balance, Chart?)> in
+                                let market = balance.currency == "BTC" ? "USDT-BTC" : "BTC-\(balance.currency)"
+                                return self.bittrexRepository.fetchCurrentChart(market: market, tickInterval: .thirtyMin)
+                                    .map { (balance, $0) }
+                                    .asObservable()
+                            }
+                        ).asSingle()
+                    }
+                    return .just(balances.map { ($0, nil) })
                 },
             bittrexRepository.fetchCurrentMarketSummaries(),
             bittrexRepository.fetchCurrencies(),
@@ -27,7 +33,7 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
         ).map(BalancesUseCase.translate)
     }
 
-    static func translate(balances: [(Balance, Chart)], marketSummaries: [MarketSummary], currencies: [Currency], markets: [Market]) -> BalanceData {
+    static func translate(balances: [(Balance, Chart?)], marketSummaries: [MarketSummary], currencies: [Currency], markets: [Market]) -> BalanceData {
         let usdtBTCMarket = marketSummaries.first(where: { $0.marketName == "USDT-BTC" })
 
         var infoList: [BalanceData.CurrencyInfo] = balances.map { balance, chart in

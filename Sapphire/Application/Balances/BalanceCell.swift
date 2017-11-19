@@ -93,7 +93,10 @@ class BalanceCell: UICollectionViewCell {
             highAndLowLabel.text = ""
         }
 
-        let chart = currencyInfo.chart
+        guard let chart = currencyInfo.chart else {
+            return
+        }
+
         let currencyValueFormatter: IAxisValueFormatter
         if chart.market.hasPrefix("BTC") {
             currencyValueFormatter = DefaultAxisValueFormatter(formatter: .decimal)
