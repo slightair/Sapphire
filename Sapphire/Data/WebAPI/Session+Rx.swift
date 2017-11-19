@@ -12,7 +12,14 @@ extension Reactive where Base: Session {
                 case let .success(response):
                     observer(.success(response))
                 case let .failure(error):
-                    observer(.error(error))
+                    switch error {
+                    case let .connectionError(connectionError):
+                        observer(.error(connectionError))
+                    case let .requestError(requestError):
+                        observer(.error(requestError))
+                    case let .responseError(responseError):
+                        observer(.error(responseError))
+                    }
                 }
             }
 
