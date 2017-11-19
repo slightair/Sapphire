@@ -123,16 +123,16 @@ final class AssetsViewController: UICollectionViewController, AssetsViewProtocol
             rx.sentMessage(#selector(viewWillTransition(to:with:))),
             presenter.balanceData.asObservable()
         )
-            .subscribe(onNext: { [weak self] arguments, balanceDataList in
-                guard let size = arguments[0] as? CGSize else {
-                    return
-                }
+        .subscribe(onNext: { [weak self] arguments, balanceDataList in
+            guard let size = arguments[0] as? CGSize else {
+                return
+            }
 
-                if let balanceData = balanceDataList.first {
-                    self?.updateCellLayout(for: balanceData, viewSize: size)
-                }
-            })
-            .disposed(by: disposeBag)
+            if let balanceData = balanceDataList.first {
+                self?.updateCellLayout(for: balanceData, viewSize: size)
+            }
+        })
+        .disposed(by: disposeBag)
     }
 
     private func updateCellLayout(for balanceData: BalanceData, viewSize: CGSize) {
@@ -154,7 +154,7 @@ final class AssetsViewController: UICollectionViewController, AssetsViewProtocol
             }
         }
 
-        override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        override func shouldInvalidateLayout(forBoundsChange _: CGRect) -> Bool {
             return true
         }
 
