@@ -14,6 +14,7 @@ target 'Sapphire' do
   pod 'Charts'
   pod 'MBProgressHUD'
   pod 'Kingfisher'
+  pod 'YMTreeMap', :git => 'https://github.com/yahoo/YMTreeMap.git'
 
   post_install do |installer|
     swift3_pods = %w(FontAwesome.swift Whisper Charts)
