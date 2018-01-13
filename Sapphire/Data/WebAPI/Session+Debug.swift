@@ -1,5 +1,6 @@
 import Foundation
 import APIKit
+import XCGLogger
 
 extension Session {
     class SessionAdapter: URLSessionAdapter {
@@ -22,9 +23,9 @@ extension Session {
                 guard let httpBody = request.httpBody, let postData = String(data: httpBody, encoding: .utf8) else {
                     return
                 }
-                print("\(method) [\(url.absoluteString)] started with \(postData)")
+                logger.debug("\(method) [\(url.absoluteString)] started with \(postData)", userInfo: Tag.networking.dictionary)
             } else {
-                print("\(method) [\(url.absoluteString)] started")
+                logger.debug("\(method) [\(url.absoluteString)] started", userInfo: Tag.networking.dictionary)
             }
         }
 
@@ -33,7 +34,7 @@ extension Session {
                 let method = request.httpMethod,
                 let response = response as? HTTPURLResponse,
                 let responseData = responseData else {
-                print("error: Unexpected response")
+                logger.error("Unexpected response", userInfo: Tag.networking.dictionary)
                 return
             }
 
@@ -47,9 +48,9 @@ extension Session {
             }
 
             if let error = error {
-                print("\(method) [\(url.absoluteString)] got error: \(error) got response: \(response.statusCode)\n\(responseObject)")
+                logger.debug("\(method) [\(url.absoluteString)] got error: \(error) got response: \(response.statusCode)\n\(responseObject)", userInfo: Tag.networking.dictionary)
             } else {
-                print("\(method) [\(url.absoluteString)] got response: \(response.statusCode)\n\(responseObject)")
+                logger.debug("\(method) [\(url.absoluteString)] got response: \(response.statusCode)\n\(responseObject)", userInfo: Tag.networking.dictionary)
             }
         }
 
@@ -57,15 +58,15 @@ extension Session {
             let prefix: String
 
             if isRequest {
-                print("[HTTP Request Headers]")
+                logger.debug("[HTTP Request Headers]", userInfo: Tag.networking.dictionary)
                 prefix = ">"
             } else {
-                print("[HTTP Response Headers]")
+                logger.debug("[HTTP Response Headers]", userInfo: Tag.networking.dictionary)
                 prefix = "<"
             }
 
             for (key, value) in headers {
-                print("\(prefix) \(key): \(value)")
+                logger.debug("\(prefix) \(key): \(value)", userInfo: Tag.networking.dictionary)
             }
         }
     }

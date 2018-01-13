@@ -2,6 +2,7 @@ platform :ios, '11.0'
 
 target 'Sapphire' do
   use_frameworks!
+  inhibit_all_warnings!
 
   pod 'SwiftLint'
   pod 'RxSwift'
@@ -15,6 +16,7 @@ target 'Sapphire' do
   pod 'MBProgressHUD'
   pod 'Kingfisher'
   pod 'YMTreeMap', :git => 'https://github.com/yahoo/YMTreeMap.git'
+  pod 'XCGLogger/UserInfoHelpers'
 
   post_install do |installer|
     swift3_pods = %w(FontAwesome.swift Whisper Charts)

@@ -41,6 +41,7 @@
 		5741E1071F66848A00DC8C52 /* CurrenciesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741E1061F66848A00DC8C52 /* CurrenciesRequest.swift */; };
 		57487D031F66791700C8AACE /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57487D021F66791700C8AACE /* Bitcoin.swift */; };
 		57487D051F66796C00C8AACE /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57487D041F66796C00C8AACE /* DateFormatter+Extensions.swift */; };
+		574A6D372009EA230055CD5E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6D362009EA230055CD5E /* Logger.swift */; };
 		57903E8B1FC175D6005D01E4 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57903E891FC175D6005D01E4 /* AssetCell.swift */; };
 		57903E8C1FC175D6005D01E4 /* AssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57903E8A1FC175D6005D01E4 /* AssetCell.xib */; };
 		5790D3D61F55A9CA0032B5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790D3D51F55A9CA0032B5A6 /* AppDelegate.swift */; };
@@ -127,6 +128,7 @@
 		5741E1061F66848A00DC8C52 /* CurrenciesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesRequest.swift; sourceTree = "<group>"; };
 		57487D021F66791700C8AACE /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		57487D041F66796C00C8AACE /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		574A6D362009EA230055CD5E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		57903E891FC175D6005D01E4 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		57903E8A1FC175D6005D01E4 /* AssetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCell.xib; sourceTree = "<group>"; };
 		5790D3D21F55A9CA0032B5A6 /* Sapphire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapphire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +342,7 @@
 				5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */,
 				5790D3E11F55A9CA0032B5A6 /* Info.plist */,
 				57FE6C251F5D8C570014C623 /* Sapphire-Bridging-Header.h */,
+				574A6D362009EA230055CD5E /* Logger.swift */,
 			);
 			path = Sapphire;
 			sourceTree = "<group>";
@@ -598,11 +601,13 @@
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/YMTreeMap/YMTreeMap.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -614,11 +619,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YMTreeMap.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,6 +707,7 @@
 				CA94E03291B234641DD279A7 /* OrdersViewBuilder.swift in Sources */,
 				52643ACCFB4232F5C692F75A /* OrdersViewController.swift in Sources */,
 				86056F79CE5FACF490E029E9 /* OrdersWireframe.swift in Sources */,
+				574A6D372009EA230055CD5E /* Logger.swift in Sources */,
 				0899BD71FBBD442D98E33C85 /* MarketDetailContract.swift in Sources */,
 				5738BEA01F6A757000DFDAF3 /* MarketDetailData.swift in Sources */,
 				489242D4A63A2818579554A9 /* MarketDetailInteractor.swift in Sources */,
