@@ -18,7 +18,7 @@ protocol BittrexDataStoreProtocol {
 final class BittrexDataStore: BittrexDataStoreProtocol {
     static let shared = BittrexDataStore()
 
-    let session = Session.shared
+    let session = Session.verbose
     var currencies: [Currency]?
     var markets: [Market]?
 
