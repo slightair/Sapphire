@@ -48,6 +48,7 @@
 		574A6D412009F71C0055CD5E /* LogLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6D402009F71C0055CD5E /* LogLabelView.swift */; };
 		574A6D432009F77A0055CD5E /* XCGLoggerFileLogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6D422009F77A0055CD5E /* XCGLoggerFileLogDataSource.swift */; };
 		574A6D45200A20C70055CD5E /* FileLogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6D44200A20C70055CD5E /* FileLogDataSource.swift */; };
+		574A6D47200B0FB50055CD5E /* LogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574A6D46200B0FB50055CD5E /* LogStore.swift */; };
 		57903E8B1FC175D6005D01E4 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57903E891FC175D6005D01E4 /* AssetCell.swift */; };
 		57903E8C1FC175D6005D01E4 /* AssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57903E8A1FC175D6005D01E4 /* AssetCell.xib */; };
 		5790D3D61F55A9CA0032B5A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790D3D51F55A9CA0032B5A6 /* AppDelegate.swift */; };
@@ -141,6 +142,7 @@
 		574A6D402009F71C0055CD5E /* LogLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLabelView.swift; sourceTree = "<group>"; };
 		574A6D422009F77A0055CD5E /* XCGLoggerFileLogDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCGLoggerFileLogDataSource.swift; sourceTree = "<group>"; };
 		574A6D44200A20C70055CD5E /* FileLogDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogDataSource.swift; sourceTree = "<group>"; };
+		574A6D46200B0FB50055CD5E /* LogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogStore.swift; sourceTree = "<group>"; };
 		57903E891FC175D6005D01E4 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		57903E8A1FC175D6005D01E4 /* AssetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCell.xib; sourceTree = "<group>"; };
 		5790D3D21F55A9CA0032B5A6 /* Sapphire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sapphire.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,14 +327,39 @@
 		574A6D392009F3DC0055CD5E /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				574A6D3A2009F4170055CD5E /* LogViewerViewController.swift */,
+				574A6D49200B112B0055CD5E /* LogViewer */,
+				574A6D48200B11140055CD5E /* LogDataSource */,
+				574A6D4A200B114A0055CD5E /* LogStore */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		574A6D48200B11140055CD5E /* LogDataSource */ = {
+			isa = PBXGroup;
+			children = (
 				574A6D3C2009F5B50055CD5E /* LogDataSource.swift */,
-				574A6D3E2009F6D00055CD5E /* LogCell.swift */,
-				574A6D402009F71C0055CD5E /* LogLabelView.swift */,
 				574A6D44200A20C70055CD5E /* FileLogDataSource.swift */,
 				574A6D422009F77A0055CD5E /* XCGLoggerFileLogDataSource.swift */,
 			);
-			path = Log;
+			path = LogDataSource;
+			sourceTree = "<group>";
+		};
+		574A6D49200B112B0055CD5E /* LogViewer */ = {
+			isa = PBXGroup;
+			children = (
+				574A6D3A2009F4170055CD5E /* LogViewerViewController.swift */,
+				574A6D3E2009F6D00055CD5E /* LogCell.swift */,
+				574A6D402009F71C0055CD5E /* LogLabelView.swift */,
+			);
+			path = LogViewer;
+			sourceTree = "<group>";
+		};
+		574A6D4A200B114A0055CD5E /* LogStore */ = {
+			isa = PBXGroup;
+			children = (
+				574A6D46200B0FB50055CD5E /* LogStore.swift */,
+			);
+			path = LogStore;
 			sourceTree = "<group>";
 		};
 		5790D3C91F55A9C90032B5A6 = {
@@ -678,6 +705,7 @@
 				5726648D1F6188C900692521 /* BittrexRepository.swift in Sources */,
 				5741E1071F66848A00DC8C52 /* CurrenciesRequest.swift in Sources */,
 				574A6D3F2009F6D00055CD5E /* LogCell.swift in Sources */,
+				574A6D47200B0FB50055CD5E /* LogStore.swift in Sources */,
 				5738BE9A1F6A4A3C00DFDAF3 /* OrderCell.swift in Sources */,
 				573A1C861F5EED72007523EB /* Session+Debug.swift in Sources */,
 				57BCE49E1F89DA390007660F /* MarketsRequest.swift in Sources */,

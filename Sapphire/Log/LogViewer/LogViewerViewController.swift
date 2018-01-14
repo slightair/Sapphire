@@ -6,6 +6,8 @@ class LogViewerViewController: UIViewController, UITableViewDataSource {
     let tableView = UITableView()
     let activityIndicatorView = UIActivityIndicatorView()
     let activityIndicatorBackgroundView = UIView()
+    let errorMessageLabel = UILabel()
+    let errorMessageBackgroundView = UIView()
 
     var isLoading = false {
         didSet {
@@ -31,10 +33,25 @@ class LogViewerViewController: UIViewController, UITableViewDataSource {
         refresh()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        refresh()
+    }
+
     @objc private func refresh() {
+        if isLoading {
+            return
+        }
         isLoading = true
-        logDataSource.load { _ in
-            self.tableView.reloadData()
+        errorMessageBackgroundView.isHidden = true
+
+        logDataSource.load { success in
+            if success {
+                self.tableView.reloadData()
+            } else {
+                self.errorMessageBackgroundView.isHidden = false
+            }
             self.isLoading = false
         }
     }
@@ -70,6 +87,24 @@ class LogViewerViewController: UIViewController, UITableViewDataSource {
         activityIndicatorBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         activityIndicatorBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         activityIndicatorBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+        errorMessageLabel.text = "Could not load logs"
+        errorMessageLabel.textColor = .darkGray
+
+        errorMessageBackgroundView.addSubview(errorMessageLabel)
+        errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorMessageLabel.centerXAnchor.constraint(equalTo: errorMessageBackgroundView.centerXAnchor).isActive = true
+        errorMessageLabel.centerYAnchor.constraint(equalTo: errorMessageBackgroundView.centerYAnchor).isActive = true
+
+        errorMessageBackgroundView.backgroundColor = .white
+        errorMessageBackgroundView.isHidden = true
+
+        view.addSubview(errorMessageBackgroundView)
+        errorMessageBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        errorMessageBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        errorMessageBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        errorMessageBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        errorMessageBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
