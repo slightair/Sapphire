@@ -74,6 +74,9 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
         let request = BittrexAPI.CurrentTicksRequest(market: market, tickInterval: tickInterval)
         return session.rx.response(request)
             .map { Chart(market: market, tickInterval: tickInterval, ticks: $0) }
+            .catchError { _ in
+                return .just(Chart(market: market, tickInterval: tickInterval, ticks: []))
+            }
     }
 
     func fetchMarkets() -> Single<[Market]> {

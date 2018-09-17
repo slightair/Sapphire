@@ -136,7 +136,8 @@ final class AssetsViewController: UICollectionViewController, AssetsViewProtocol
     }
 
     private func updateCellLayout(for balanceData: BalanceData, viewSize: CGSize) {
-        let treeMap = YMTreeMap(withValues: balanceData.items.map { $0.estimatedBTCValue })
+        let values = balanceData.items.map { $0.estimatedBTCValue }.filter { $0 > 0 }
+        let treeMap = YMTreeMap(withValues: values)
         treeMap.alignment = .RetinaSubPixel
         if let layout = collectionViewLayout as? Layout {
             let navigationBarHeight: CGFloat = 44
