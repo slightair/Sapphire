@@ -42,6 +42,7 @@ class BalanceCell: UICollectionViewCell {
     @IBOutlet weak var lastValueLabel: UILabel!
     @IBOutlet weak var highAndLowLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
+    @IBOutlet weak var noDataLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -97,16 +98,24 @@ class BalanceCell: UICollectionViewCell {
             return
         }
 
-        let currencyValueFormatter: IAxisValueFormatter
-        if chart.market.hasPrefix("BTC") {
-            currencyValueFormatter = DefaultAxisValueFormatter(formatter: .decimal)
-        } else {
-            currencyValueFormatter = DefaultAxisValueFormatter(formatter: .currency)
-        }
+        if chart.ticks.count > 0 {
+            let currencyValueFormatter: IAxisValueFormatter
+            if chart.market.hasPrefix("BTC") {
+                currencyValueFormatter = DefaultAxisValueFormatter(formatter: .decimal)
+            } else {
+                currencyValueFormatter = DefaultAxisValueFormatter(formatter: .currency)
+            }
 
-        chartView.xAxis.valueFormatter = MarketDetailChartCell.DateValueFormatter(chart: chart)
-        chartView.rightAxis.valueFormatter = currencyValueFormatter
-        chartView.data = MarketDetailChartCell.candleData(from: chart)
+            chartView.xAxis.valueFormatter = MarketDetailChartCell.DateValueFormatter(chart: chart)
+            chartView.rightAxis.valueFormatter = currencyValueFormatter
+            chartView.data = MarketDetailChartCell.candleData(from: chart)
+
+            chartView.isHidden = false
+            noDataLabel.isHidden = true
+        } else {
+            chartView.isHidden = true
+            noDataLabel.isHidden = false
+        }
     }
 
     static func candleData(from chart: Chart) -> CandleChartData {
