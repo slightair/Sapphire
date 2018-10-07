@@ -471,7 +471,6 @@
 				5790D3CF1F55A9C90032B5A6 /* Frameworks */,
 				5790D3D01F55A9C90032B5A6 /* Resources */,
 				91BA4360CCB554508EB6FC4F /* [CP] Embed Pods Frameworks */,
-				4D6E4687E3EC84320DD06183 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -537,21 +536,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D6E4687E3EC84320DD06183 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		57FE6C141F59F2490014C623 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
