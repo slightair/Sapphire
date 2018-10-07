@@ -66,7 +66,7 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
                 return "\(data.marketGroup) - \(dateString)"
             },
             sectionIndexTitles: { dataSource in
-                dataSource.sectionModels.flatMap { $0.marketGroup.first }.map { String($0) }
+                dataSource.sectionModels.compactMap { $0.marketGroup.first }.map { String($0) }
             }
         )
 

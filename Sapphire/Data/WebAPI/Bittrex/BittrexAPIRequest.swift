@@ -111,7 +111,7 @@ extension BittrexAPIRequest {
             hexString += String(format: "%02x", result[i])
         }
 
-        result.deallocate(capacity: digestLength)
+        result.deallocate()
 
         return hexString
     }

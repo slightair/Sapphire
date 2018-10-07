@@ -61,7 +61,7 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
         .disposed(by: disposeBag)
 
         collectionView.registerFromNib(of: BalanceCell.self)
-        collectionView.registerFromNib(of: BalancesSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+        collectionView.registerFromNib(of: BalancesSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView.delegate = nil
         collectionView.dataSource = nil
         collectionView.backgroundColor = .white
@@ -80,7 +80,7 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
                 return cell
             },
             configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
-                guard kind == UICollectionElementKindSectionHeader else {
+                guard kind == UICollectionView.elementKindSectionHeader else {
                     fatalError("Unexpected supplementaryView kind: \(kind)")
                 }
 
@@ -89,7 +89,7 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
                 let usdtAssets = NumberFormatter.currency.string(from: NSNumber(value: data.usdtAssets)) ?? ""
                 let btcAssets = NumberFormatter.currency.string(from: NSNumber(value: data.btcAssets)) ?? ""
 
-                let view: BalancesSectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, for: indexPath)
+                let view: BalancesSectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
                 view.titleLabel.text = "\(dateString) - \(btcAssets) / $\(usdtAssets)"
 
                 return view
