@@ -9,6 +9,7 @@ struct MainTabBarControllerControllerBuilder {
             UINavigationController(rootViewController: OrdersViewBuilder.build()),
             UINavigationController(rootViewController: AssetsViewBuilder.build()),
         ]
+        tabBarController.modalPresentationStyle = .fullScreen
         return tabBarController
     }
 }

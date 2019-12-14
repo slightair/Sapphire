@@ -94,7 +94,7 @@ struct BalancesUseCase: BalancesUseCaseProtocol {
         let btcAssets: Double = Double(infoList.reduce(0) { r, c in r + c.estimatedBTCValue }) / Double(Bitcoin.satoshi)
         let usdtAssets: Double = btcAssets * usdtBTCPrice
 
-        if let btcIndex = infoList.index(where: { $0.name == "BTC" }) {
+        if let btcIndex = infoList.firstIndex(where: { $0.name == "BTC" }) {
             let btcInfo = infoList.remove(at: btcIndex)
             infoList.insert(btcInfo, at: 0)
         }

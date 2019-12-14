@@ -1,11 +1,10 @@
 import UIKit
 import Charts
-import ChameleonFramework
 import Kingfisher
 
 class BalanceCell: UICollectionViewCell {
     static let numberOfTicks = 96
-    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemBlue, size: CGSize(width: 64, height: 64))
 
     class DateValueFormatter: NSObject, IAxisValueFormatter {
         static let timeDateFormatter: DateFormatter = {
@@ -51,11 +50,11 @@ class BalanceCell: UICollectionViewCell {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawGridLinesEnabled = true
         chartView.xAxis.drawAxisLineEnabled = false
-        chartView.xAxis.labelTextColor = .flatGray
-        chartView.xAxis.gridColor = .flatWhite
+        chartView.xAxis.labelTextColor = .systemGray
+        chartView.xAxis.gridColor = .systemBackground
         chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.labelTextColor = .flatGray
-        chartView.rightAxis.gridColor = .flatWhite
+        chartView.rightAxis.labelTextColor = .systemGray
+        chartView.rightAxis.gridColor = .systemBackground
         chartView.chartDescription?.enabled = false
         chartView.legend.enabled = false
         chartView.doubleTapToZoomEnabled = false
@@ -73,10 +72,10 @@ class BalanceCell: UICollectionViewCell {
 
         if let change = currencyInfo.change {
             changeLabel.text = NumberFormatter.percent.string(from: NSNumber(value: change))
-            changeLabel.textColor = change >= 0 ? .flatGreen : .flatRed
+            changeLabel.textColor = change >= 0 ? .systemGreen : .systemRed
         } else {
             changeLabel.text = ""
-            changeLabel.textColor = .flatBlue
+            changeLabel.textColor = .systemBlue
         }
 
         if let last = currencyInfo.last {
@@ -128,23 +127,23 @@ class BalanceCell: UICollectionViewCell {
                                  close: record.close * magnification)
         }
 
-        let dataSet = CandleChartDataSet(values: entries, label: chart.market)
+        let dataSet = CandleChartDataSet(entries: entries, label: chart.market)
         dataSet.drawValuesEnabled = false
-        dataSet.shadowColor = .flatGray
+        dataSet.shadowColor = .systemGray
         dataSet.shadowWidth = 0.75
-        dataSet.increasingColor = .flatGreen
+        dataSet.increasingColor = .systemGreen
         dataSet.increasingFilled = true
-        dataSet.decreasingColor = .flatRed
+        dataSet.decreasingColor = .systemRed
         dataSet.decreasingFilled = true
-        dataSet.neutralColor = .flatBlue
+        dataSet.neutralColor = .systemBlue
 
         return CandleChartData(dataSet: dataSet)
     }
 
     static func cellSize(forWidth width: CGFloat) -> CGSize {
-        let chartHeight: CGFloat = (width - 8 * 2 - 8 * 2) * (7 / 16)
+        let chartHeight: CGFloat = (width - 32) * (7 / 16)
         let summaryHeight: CGFloat = 48
-        let cellHeight = 8 * 2 + 4 * 2 + chartHeight + summaryHeight
+        let cellHeight = 24 + chartHeight + summaryHeight
 
         return CGSize(width: width, height: cellHeight)
     }

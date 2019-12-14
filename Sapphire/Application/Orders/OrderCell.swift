@@ -3,7 +3,7 @@ import Kingfisher
 
 class OrderCell: UITableViewCell {
     static let rowHeight: CGFloat = 60
-    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, textColor: .flatBlue, size: CGSize(width: 64, height: 64))
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemBlue, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var exchangeLabel: UILabel!
@@ -38,6 +38,6 @@ class OrderCell: UITableViewCell {
         }
         dateLabel.text = "\(openedString) - \(closedString)"
         priceLabel.text = "\(NumberFormatter.currency.string(from: NSNumber(value: orderInfo.price)) ?? "") \(orderInfo.baseCurrency)"
-        priceLabel.textColor = orderInfo.price > 0 ? .flatGreen : .flatRed
+        priceLabel.textColor = orderInfo.price > 0 ? .systemGreen : .systemRed
     }
 }

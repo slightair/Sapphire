@@ -42,11 +42,11 @@ class MarketDetailChartCell: UITableViewCell {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawGridLinesEnabled = true
         chartView.xAxis.drawAxisLineEnabled = false
-        chartView.xAxis.labelTextColor = .flatGray
-        chartView.xAxis.gridColor = .flatWhite
+        chartView.xAxis.labelTextColor = .systemGray
+        chartView.xAxis.gridColor = .systemBackground
         chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.labelTextColor = .flatGray
-        chartView.rightAxis.gridColor = .flatWhite
+        chartView.rightAxis.labelTextColor = .systemGray
+        chartView.rightAxis.gridColor = .systemBackground
         chartView.chartDescription?.enabled = false
         chartView.legend.enabled = false
         chartView.doubleTapToZoomEnabled = false
@@ -79,15 +79,15 @@ class MarketDetailChartCell: UITableViewCell {
                                  close: record.close * magnification)
         }
 
-        let dataSet = CandleChartDataSet(values: entries, label: chart.market)
+        let dataSet = CandleChartDataSet(entries: entries, label: chart.market)
         dataSet.drawValuesEnabled = false
-        dataSet.shadowColor = .flatGray
+        dataSet.shadowColor = .systemGray
         dataSet.shadowWidth = 0.75
-        dataSet.increasingColor = .flatGreen
+        dataSet.increasingColor = .systemGreen
         dataSet.increasingFilled = true
-        dataSet.decreasingColor = .flatRed
+        dataSet.decreasingColor = .systemRed
         dataSet.decreasingFilled = true
-        dataSet.neutralColor = .flatBlue
+        dataSet.neutralColor = .systemBlue
 
         return CandleChartData(dataSet: dataSet)
     }

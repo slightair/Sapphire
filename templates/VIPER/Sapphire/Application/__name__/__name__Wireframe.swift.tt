@@ -1,9 +1,0 @@
-import UIKit
-
-final class <%= name %>Wireframe: <%= name %>WireframeProtocol {
-    private weak var viewController: <%= name %>ViewController!
-
-    init(viewController: <%= name %>ViewController) {
-        self.viewController = viewController
-    }
-}

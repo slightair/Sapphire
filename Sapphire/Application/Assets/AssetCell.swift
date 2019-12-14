@@ -23,8 +23,8 @@ final class AssetCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        nameLabel.textColor = .flatWhite
-        percentageLabel.textColor = .flatWhite
+        nameLabel.textColor = .systemGray
+        percentageLabel.textColor = .systemGray
     }
 
     func update(currencyInfo: BalanceData.Item, totalBTCAssets: Double) {

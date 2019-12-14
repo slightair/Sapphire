@@ -1,9 +1,9 @@
 import UIKit
 
 final class AssetsWireframe: AssetsWireframeProtocol {
-    private weak var viewController: AssetsViewController!
+    private weak var viewController: UIViewController!
 
-    init(viewController: AssetsViewController) {
+    init(viewController: UIViewController) {
         self.viewController = viewController
     }
 }

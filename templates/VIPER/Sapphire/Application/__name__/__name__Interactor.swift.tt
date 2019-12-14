@@ -1,7 +1,0 @@
-import Foundation
-import RxSwift
-
-final class <%= name %>Interactor: <%= name %>InteractorProtocol {
-    init() {
-    }
-}

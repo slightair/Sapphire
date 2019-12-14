@@ -1,12 +1,12 @@
 import UIKit
-import FontAwesome_swift
+import FontAwesome
 
 struct MarketSummariesSplitViewControllerBuilder {
     final class MarketSummariesSplitViewController: UISplitViewController {
         init() {
             super.init(nibName: nil, bundle: nil)
 
-            tabBarItem.image = UIImage.fontAwesomeIcon(name: .lineChart, textColor: .white, size: CGSize(width: 32, height: 32))
+            tabBarItem.image = UIImage.fontAwesomeIcon(name: .chartLine, style: .solid, textColor: .systemGray, size: CGSize(width: 32, height: 32))
             tabBarItem.title = "Market"
         }
 

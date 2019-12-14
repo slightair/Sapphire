@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "APIKit",
+        "repositoryURL": "https://github.com/ishkawa/APIKit",
+        "state": {
+          "branch": null,
+          "revision": "862a8f80dd117693750c6ddaba2fe6a85b061a9a",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "Charts",
+        "repositoryURL": "https://github.com/danielgindi/Charts",
+        "state": {
+          "branch": null,
+          "revision": "dbf7fa2891270f88aeafc872ea0beddb344af94b",
+          "version": "3.4.0"
+        }
+      },
+      {
+        "package": "FontAwesome",
+        "repositoryURL": "https://github.com/thii/FontAwesome.swift",
+        "state": {
+          "branch": null,
+          "revision": "51f059d794d1435a02c0ec6212a930243e1e40e0",
+          "version": "1.8.2"
+        }
+      },
+      {
+        "package": "JGProgressHUD",
+        "repositoryURL": "https://github.com/JonasGessner/JGProgressHUD",
+        "state": {
+          "branch": null,
+          "revision": "08d130dd614a743f813286f096804c43a6ffa3f6",
+          "version": "2.1.0"
+        }
+      },
+      {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher",
+        "state": {
+          "branch": null,
+          "revision": "2f9d171f17869768f6dbec1d039b851e2503af35",
+          "version": "5.12.0"
+        }
+      },
+      {
+        "package": "RxDataSources",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources",
+        "state": {
+          "branch": null,
+          "revision": "a18cee01c9ee55f04d0c7eb15c77a96c3648c88e",
+          "version": "4.0.1"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
+        "state": {
+          "branch": null,
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

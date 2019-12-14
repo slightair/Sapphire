@@ -2,8 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
-import Whisper
-import MBProgressHUD
+import JGProgressHUD
 
 final class MarketSummariesViewController: UITableViewController, MarketSummariesViewProtocol {
     private var presenter: MarketSummariesPresenterProtocol!
@@ -35,6 +34,9 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         let refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
 
+        let loadingView = JGProgressHUD(style: .dark)
+        loadingView.textLabel.text = "Loading"
+
         Observable.of(
             rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in },
             refreshControl.rx.controlEvent(.valueChanged).map { _ in },
@@ -43,7 +45,7 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
         .merge()
         .do(onNext: { [weak self] _ in
             guard let view = self?.navigationController?.view else { return }
-            MBProgressHUD.showAdded(to: view, animated: true)
+            loadingView.show(in: view)
         })
         .bind(to: refreshTriggerSubject)
         .disposed(by: disposeBag)
@@ -76,18 +78,21 @@ final class MarketSummariesViewController: UITableViewController, MarketSummarie
 
         Driver.of(presenter.marketSummaryData.map { _ in false }, presenter.errors.map { _ in false })
             .merge()
-            .do(onNext: { [weak self] _ in
-                guard let view = self?.navigationController?.view else { return }
-                MBProgressHUD.hide(for: view, animated: true)
+            .do(onNext: { _ in
+                loadingView.dismiss()
             })
             .drive(refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
 
         presenter.errors
             .drive(onNext: { [weak self] error in
-                guard let navigationController = self?.navigationController else { return }
-                let message = Message(title: error.localizedDescription, textColor: .flatWhite, backgroundColor: .flatRed)
-                Whisper.show(whisper: message, to: navigationController)
+                guard let view = self?.navigationController?.view else { return }
+                let errorView = JGProgressHUD(style: .dark)
+                errorView.textLabel.text = "Error"
+                errorView.detailTextLabel.text = error.localizedDescription
+                errorView.indicatorView = JGProgressHUDErrorIndicatorView()
+                errorView.show(in: view)
+                errorView.dismiss(afterDelay: 3.0)
             })
             .disposed(by: disposeBag)
 

@@ -45,7 +45,7 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
 
         let request = BittrexAPI.CurrenciesRequest()
         return session.rx.response(request)
-            .do(onNext: { [weak self] currencies in
+            .do(onSuccess: { [weak self] currencies in
                 self?.currencies = currencies
             })
     }
@@ -86,7 +86,7 @@ final class BittrexDataStore: BittrexDataStoreProtocol {
 
         let request = BittrexAPI.MarketsRequest()
         return session.rx.response(request)
-            .do(onNext: { [weak self] markets in
+            .do(onSuccess: { [weak self] markets in
                 self?.markets = markets
             })
     }

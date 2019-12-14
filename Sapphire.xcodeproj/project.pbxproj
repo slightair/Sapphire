@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		4CAD84EBD54B125414762085 /* MarketSummariesViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04B6497442DE2DBC4E8106C /* MarketSummariesViewBuilder.swift */; };
 		52643ACCFB4232F5C692F75A /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190D79C724AA7815ADBB89B /* OrdersViewController.swift */; };
 		554B6FE60A86B01DB859A8E9 /* AssetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00138DA59B7835FEE20BACA2 /* AssetsPresenter.swift */; };
-		56FA7B8F60F550267103802E /* Pods_Sapphire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */; };
 		572664871F61861800692521 /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572664851F61861800692521 /* BalanceCell.swift */; };
 		572664881F61861800692521 /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 572664861F61861800692521 /* BalanceCell.xib */; };
 		5726648B1F61889E00692521 /* BalancesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726648A1F61889E00692521 /* BalancesUseCase.swift */; };
@@ -48,6 +47,19 @@
 		5790D3DB1F55A9CA0032B5A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3D91F55A9CA0032B5A6 /* Main.storyboard */; };
 		5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */; };
 		5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790D3DE1F55A9CA0032B5A6 /* LaunchScreen.storyboard */; };
+		5796CB9923A4CCDF00AE2C27 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CB9823A4CCDF00AE2C27 /* RxRelay */; };
+		5796CB9B23A4CCDF00AE2C27 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CB9A23A4CCDF00AE2C27 /* RxSwift */; };
+		5796CB9D23A4CCDF00AE2C27 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CB9C23A4CCDF00AE2C27 /* RxCocoa */; };
+		5796CBA023A4CD1800AE2C27 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CB9F23A4CD1800AE2C27 /* Charts */; };
+		5796CBA323A4CD2B00AE2C27 /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBA223A4CD2B00AE2C27 /* APIKit */; };
+		5796CBA623A4CD8900AE2C27 /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBA523A4CD8900AE2C27 /* FontAwesome */; };
+		5796CBA923A4CDD900AE2C27 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBA823A4CDD900AE2C27 /* Differentiator */; };
+		5796CBAB23A4CDD900AE2C27 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBAA23A4CDD900AE2C27 /* RxDataSources */; };
+		5796CBAE23A4CE2700AE2C27 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBAD23A4CE2700AE2C27 /* Kingfisher */; };
+		5796CBB423A4D93A00AE2C27 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 5796CBB323A4D93A00AE2C27 /* JGProgressHUD */; };
+		5796CBC423A4E33A00AE2C27 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5796CBC123A4E31A00AE2C27 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		5796CBC523A4E33A00AE2C27 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5796CBC323A4E31A00AE2C27 /* Font Awesome 5 Free-Regular-400.otf */; };
+		5796CBC623A4E33A00AE2C27 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5796CBC223A4E31A00AE2C27 /* Font Awesome 5 Free-Solid-900.otf */; };
 		5798FC721F619431005555BE /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798FC711F619431005555BE /* UITableView+Extensions.swift */; };
 		579B234C765E0006581C61DD /* MarketDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00622BB501B10B1AFEF27CD /* MarketDetailPresenter.swift */; };
 		57B0DD511F666CC300652681 /* CurrentMarketSummariesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */; };
@@ -98,12 +110,10 @@
 /* Begin PBXFileReference section */
 		00138DA59B7835FEE20BACA2 /* AssetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetsPresenter.swift; sourceTree = "<group>"; };
 		0190D79C724AA7815ADBB89B /* OrdersViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sapphire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C7F3DE39DBBB82E6AF7D727 /* MarketSummariesContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketSummariesContract.swift; sourceTree = "<group>"; };
 		2950ED740A78D0FF5441B4AC /* MarketDetailContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketDetailContract.swift; sourceTree = "<group>"; };
 		297A0E96863ACC27049C3349 /* OrdersContract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrdersContract.swift; sourceTree = "<group>"; };
 		39D205915170AEE065D11CCD /* MarketDetailInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketDetailInteractor.swift; sourceTree = "<group>"; };
-		3E62B4AC3B00C089F7CBF662 /* Pods-Sapphire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapphire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire.debug.xcconfig"; sourceTree = "<group>"; };
 		475601400B0CCD4041D23588 /* MarketSummariesWireframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketSummariesWireframe.swift; sourceTree = "<group>"; };
 		572664851F61861800692521 /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
 		572664861F61861800692521 /* BalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceCell.xib; sourceTree = "<group>"; };
@@ -136,6 +146,9 @@
 		5790D3DC1F55A9CA0032B5A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5790D3DF1F55A9CA0032B5A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5790D3E11F55A9CA0032B5A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5796CBC123A4E31A00AE2C27 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Brands-Regular-400.otf"; path = "FontAwesome/otfs/Font Awesome 5 Brands-Regular-400.otf"; sourceTree = SOURCE_ROOT; };
+		5796CBC223A4E31A00AE2C27 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Solid-900.otf"; path = "FontAwesome/otfs/Font Awesome 5 Free-Solid-900.otf"; sourceTree = SOURCE_ROOT; };
+		5796CBC323A4E31A00AE2C27 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "FontAwesome/otfs/Font Awesome 5 Free-Regular-400.otf"; sourceTree = SOURCE_ROOT; };
 		5798FC711F619431005555BE /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		57B0DD501F666CC300652681 /* CurrentMarketSummariesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMarketSummariesRequest.swift; sourceTree = "<group>"; };
 		57B0DD521F666D4600652681 /* MarketSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSummary.swift; sourceTree = "<group>"; };
@@ -180,7 +193,6 @@
 		CFB1E7A7FB8461D6E82AE879 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
 		D00622BB501B10B1AFEF27CD /* MarketDetailPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketDetailPresenter.swift; sourceTree = "<group>"; };
 		DF5CE99CBC546C76AB878B75 /* OrdersInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrdersInteractor.swift; sourceTree = "<group>"; };
-		E415C85B3CE43BBCCAA27A9D /* Pods-Sapphire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sapphire.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire.release.xcconfig"; sourceTree = "<group>"; };
 		E9806E019FC489411046AEA3 /* BalancesViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BalancesViewBuilder.swift; sourceTree = "<group>"; };
 		F04B6497442DE2DBC4E8106C /* MarketSummariesViewBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarketSummariesViewBuilder.swift; sourceTree = "<group>"; };
 		F8E1170FABA0FE6562C3CB1B /* OrdersPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrdersPresenter.swift; sourceTree = "<group>"; };
@@ -194,7 +206,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56FA7B8F60F550267103802E /* Pods_Sapphire.framework in Frameworks */,
+				5796CBA923A4CDD900AE2C27 /* Differentiator in Frameworks */,
+				5796CBA323A4CD2B00AE2C27 /* APIKit in Frameworks */,
+				5796CB9D23A4CCDF00AE2C27 /* RxCocoa in Frameworks */,
+				5796CBAE23A4CE2700AE2C27 /* Kingfisher in Frameworks */,
+				5796CBB423A4D93A00AE2C27 /* JGProgressHUD in Frameworks */,
+				5796CB9B23A4CCDF00AE2C27 /* RxSwift in Frameworks */,
+				5796CB9923A4CCDF00AE2C27 /* RxRelay in Frameworks */,
+				5796CBAB23A4CDD900AE2C27 /* RxDataSources in Frameworks */,
+				5796CBA023A4CD1800AE2C27 /* Charts in Frameworks */,
+				5796CBA623A4CD8900AE2C27 /* FontAwesome in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,15 +237,6 @@
 				57E4F6171F76A4CE00D0759C /* BalancesSectionHeaderView.xib */,
 			);
 			path = Balances;
-			sourceTree = "<group>";
-		};
-		15B9899D40CE70186AA00C4E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3E62B4AC3B00C089F7CBF662 /* Pods-Sapphire.debug.xcconfig */,
-				E415C85B3CE43BBCCAA27A9D /* Pods-Sapphire.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		271E17855CF1D1E8651FCD23 /* MarketDetail */ = {
@@ -313,8 +325,6 @@
 			children = (
 				5790D3D41F55A9CA0032B5A6 /* Sapphire */,
 				5790D3D31F55A9CA0032B5A6 /* Products */,
-				15B9899D40CE70186AA00C4E /* Pods */,
-				9554955A5A00363DD2B22608 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -329,6 +339,7 @@
 		5790D3D41F55A9CA0032B5A6 /* Sapphire */ = {
 			isa = PBXGroup;
 			children = (
+				5796CBBA23A4E18700AE2C27 /* FontAwesome */,
 				5790D3D51F55A9CA0032B5A6 /* AppDelegate.swift */,
 				57FE6C151F59F33C0014C623 /* Appearance.swift */,
 				33616618E5B9F291709BCD5D /* Application */,
@@ -342,6 +353,16 @@
 				57FE6C251F5D8C570014C623 /* Sapphire-Bridging-Header.h */,
 			);
 			path = Sapphire;
+			sourceTree = "<group>";
+		};
+		5796CBBA23A4E18700AE2C27 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				5796CBC123A4E31A00AE2C27 /* Font Awesome 5 Brands-Regular-400.otf */,
+				5796CBC323A4E31A00AE2C27 /* Font Awesome 5 Free-Regular-400.otf */,
+				5796CBC223A4E31A00AE2C27 /* Font Awesome 5 Free-Solid-900.otf */,
+			);
+			name = FontAwesome;
 			sourceTree = "<group>";
 		};
 		57E682BA1F6839CF00507F3D /* MarketSummaries */ = {
@@ -450,14 +471,6 @@
 			path = MarketSummaries;
 			sourceTree = "<group>";
 		};
-		9554955A5A00363DD2B22608 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				081D17767BB6E775A2572EC8 /* Pods_Sapphire.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -465,18 +478,28 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5790D3E41F55A9CA0032B5A6 /* Build configuration list for PBXNativeTarget "Sapphire" */;
 			buildPhases = (
-				909DEC01F7B263AA86B5F229 /* [CP] Check Pods Manifest.lock */,
 				57FE6C141F59F2490014C623 /* SwiftLint */,
 				5790D3CE1F55A9C90032B5A6 /* Sources */,
 				5790D3CF1F55A9C90032B5A6 /* Frameworks */,
 				5790D3D01F55A9C90032B5A6 /* Resources */,
-				91BA4360CCB554508EB6FC4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Sapphire;
+			packageProductDependencies = (
+				5796CB9823A4CCDF00AE2C27 /* RxRelay */,
+				5796CB9A23A4CCDF00AE2C27 /* RxSwift */,
+				5796CB9C23A4CCDF00AE2C27 /* RxCocoa */,
+				5796CB9F23A4CD1800AE2C27 /* Charts */,
+				5796CBA223A4CD2B00AE2C27 /* APIKit */,
+				5796CBA523A4CD8900AE2C27 /* FontAwesome */,
+				5796CBA823A4CDD900AE2C27 /* Differentiator */,
+				5796CBAA23A4CDD900AE2C27 /* RxDataSources */,
+				5796CBAD23A4CE2700AE2C27 /* Kingfisher */,
+				5796CBB323A4D93A00AE2C27 /* JGProgressHUD */,
+			);
 			productName = Sapphire;
 			productReference = 5790D3D21F55A9CA0032B5A6 /* Sapphire.app */;
 			productType = "com.apple.product-type.application";
@@ -507,6 +530,15 @@
 				Base,
 			);
 			mainGroup = 5790D3C91F55A9C90032B5A6;
+			packageReferences = (
+				5796CB9723A4CCDF00AE2C27 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				5796CB9E23A4CD1700AE2C27 /* XCRemoteSwiftPackageReference "Charts" */,
+				5796CBA123A4CD2B00AE2C27 /* XCRemoteSwiftPackageReference "APIKit" */,
+				5796CBA423A4CD8900AE2C27 /* XCRemoteSwiftPackageReference "FontAwesome" */,
+				5796CBA723A4CDD900AE2C27 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				5796CBAC23A4CE2700AE2C27 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5796CBB223A4D93A00AE2C27 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+			);
 			productRefGroup = 5790D3D31F55A9CA0032B5A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,11 +553,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5796CBC523A4E33A00AE2C27 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				57E4F6191F76A4CE00D0759C /* BalancesSectionHeaderView.xib in Resources */,
 				5790D3E01F55A9CA0032B5A6 /* LaunchScreen.storyboard in Resources */,
+				5796CBC623A4E33A00AE2C27 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				5790D3DD1F55A9CA0032B5A6 /* Assets.xcassets in Resources */,
 				5738BE9B1F6A4A3C00DFDAF3 /* OrderCell.xib in Resources */,
 				572664881F61861800692521 /* BalanceCell.xib in Resources */,
+				5796CBC423A4E33A00AE2C27 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				57903E8C1FC175D6005D01E4 /* AssetCell.xib in Resources */,
 				57EEF3811F6BC79C00D9DC8E /* MarketDetailChartCell.xib in Resources */,
 				5790D3DB1F55A9CA0032B5A6 /* Main.storyboard in Resources */,
@@ -548,67 +583,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		909DEC01F7B263AA86B5F229 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sapphire-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91BA4360CCB554508EB6FC4F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
-				"${BUILT_PRODUCTS_DIR}/YMTreeMap/YMTreeMap.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APIKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YMTreeMap.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sapphire/Pods-Sapphire-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "SWIFT_LINT_PATH=/opt/brew/bin/swiftlint\nif which \"${SWIFT_LINT_PATH}\" >/dev/null; then\n\"${SWIFT_LINT_PATH}\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -768,7 +743,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -821,37 +796,39 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		5790D3E51F55A9CA0032B5A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E62B4AC3B00C089F7CBF662 /* Pods-Sapphire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Sapphire/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.ios.Sapphire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sapphire/Sapphire-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		5790D3E61F55A9CA0032B5A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E415C85B3CE43BBCCAA27A9D /* Pods-Sapphire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -859,12 +836,15 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Sapphire/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.ios.Sapphire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sapphire/Sapphire-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -891,6 +871,118 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5796CB9723A4CCDF00AE2C27 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		5796CB9E23A4CD1700AE2C27 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
+		5796CBA123A4CD2B00AE2C27 /* XCRemoteSwiftPackageReference "APIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ishkawa/APIKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		5796CBA423A4CD8900AE2C27 /* XCRemoteSwiftPackageReference "FontAwesome" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/FontAwesome.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+		5796CBA723A4CDD900AE2C27 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		5796CBAC23A4CE2700AE2C27 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
+		5796CBB223A4D93A00AE2C27 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5796CB9823A4CCDF00AE2C27 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CB9723A4CCDF00AE2C27 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		5796CB9A23A4CCDF00AE2C27 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CB9723A4CCDF00AE2C27 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		5796CB9C23A4CCDF00AE2C27 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CB9723A4CCDF00AE2C27 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		5796CB9F23A4CD1800AE2C27 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CB9E23A4CD1700AE2C27 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		5796CBA223A4CD2B00AE2C27 /* APIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBA123A4CD2B00AE2C27 /* XCRemoteSwiftPackageReference "APIKit" */;
+			productName = APIKit;
+		};
+		5796CBA523A4CD8900AE2C27 /* FontAwesome */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBA423A4CD8900AE2C27 /* XCRemoteSwiftPackageReference "FontAwesome" */;
+			productName = FontAwesome;
+		};
+		5796CBA823A4CDD900AE2C27 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBA723A4CDD900AE2C27 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		5796CBAA23A4CDD900AE2C27 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBA723A4CDD900AE2C27 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		5796CBAD23A4CE2700AE2C27 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBAC23A4CE2700AE2C27 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		5796CBB323A4D93A00AE2C27 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5796CBB223A4D93A00AE2C27 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5790D3CA1F55A9C90032B5A6 /* Project object */;
 }
