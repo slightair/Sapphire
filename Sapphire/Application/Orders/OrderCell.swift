@@ -3,7 +3,7 @@ import Kingfisher
 
 class OrderCell: UITableViewCell {
     static let rowHeight: CGFloat = 60
-    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemBlue, size: CGSize(width: 64, height: 64))
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemGray, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var exchangeLabel: UILabel!

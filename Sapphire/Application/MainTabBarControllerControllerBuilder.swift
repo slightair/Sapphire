@@ -7,7 +7,6 @@ struct MainTabBarControllerControllerBuilder {
             MarketSummariesSplitViewControllerBuilder.build(),
             UINavigationController(rootViewController: BalancesViewBuilder.build()),
             UINavigationController(rootViewController: OrdersViewBuilder.build()),
-            UINavigationController(rootViewController: AssetsViewBuilder.build()),
         ]
         tabBarController.modalPresentationStyle = .fullScreen
         return tabBarController

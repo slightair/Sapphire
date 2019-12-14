@@ -27,12 +27,12 @@ extension MarketSummary: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.init(marketName: try container.decode(String.self, forKey: .marketName),
-                  high: try container.decode(Double.self, forKey: .high),
-                  low: try container.decode(Double.self, forKey: .low),
-                  baseVolume: try container.decode(Double.self, forKey: .baseVolume),
-                  last: try container.decode(Double.self, forKey: .last),
-                  bid: try container.decode(Double.self, forKey: .bid),
-                  ask: try container.decode(Double.self, forKey: .ask),
-                  prevDay: try container.decode(Double.self, forKey: .prevDay))
+                  high: (try? container.decode(Double.self, forKey: .high)) ?? 0,
+                  low: (try? container.decode(Double.self, forKey: .low)) ?? 0,
+                  baseVolume: (try? container.decode(Double.self, forKey: .baseVolume)) ?? 0,
+                  last: (try? container.decode(Double.self, forKey: .last)) ?? 0,
+                  bid: (try? container.decode(Double.self, forKey: .bid)) ?? 0,
+                  ask: (try? container.decode(Double.self, forKey: .ask)) ?? 0,
+                  prevDay: (try? container.decode(Double.self, forKey: .prevDay)) ?? 0)
     }
 }

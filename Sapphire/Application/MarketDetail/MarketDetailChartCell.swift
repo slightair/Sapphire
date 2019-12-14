@@ -42,11 +42,11 @@ class MarketDetailChartCell: UITableViewCell {
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.drawGridLinesEnabled = true
         chartView.xAxis.drawAxisLineEnabled = false
-        chartView.xAxis.labelTextColor = .systemGray
-        chartView.xAxis.gridColor = .systemBackground
+        chartView.xAxis.labelTextColor = .label
+        chartView.xAxis.gridColor = .systemGray3
         chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.labelTextColor = .systemGray
-        chartView.rightAxis.gridColor = .systemBackground
+        chartView.rightAxis.labelTextColor = .label
+        chartView.rightAxis.gridColor = .systemGray3
         chartView.chartDescription?.enabled = false
         chartView.legend.enabled = false
         chartView.doubleTapToZoomEnabled = false

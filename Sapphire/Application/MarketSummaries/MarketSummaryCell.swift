@@ -4,7 +4,7 @@ import Kingfisher
 
 class MarketSummaryCell: UITableViewCell {
     static let rowHeight: CGFloat = 36
-    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemBlue, size: CGSize(width: 64, height: 64))
+    static let placeholderImage = UIImage.fontAwesomeIcon(name: .question, style: .solid, textColor: .systemGray, size: CGSize(width: 64, height: 64))
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!

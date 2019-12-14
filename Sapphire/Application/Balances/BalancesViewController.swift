@@ -65,7 +65,7 @@ final class BalancesViewController: UICollectionViewController, BalancesViewProt
         collectionView.registerFromNib(of: BalancesSectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView.delegate = nil
         collectionView.dataSource = nil
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.showsVerticalScrollIndicator = false
 
         guard let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {

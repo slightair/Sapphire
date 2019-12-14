@@ -6,7 +6,7 @@ struct MarketSummariesSplitViewControllerBuilder {
         init() {
             super.init(nibName: nil, bundle: nil)
 
-            tabBarItem.image = UIImage.fontAwesomeIcon(name: .chartLine, style: .solid, textColor: .systemGray, size: CGSize(width: 32, height: 32))
+            tabBarItem.image = UIImage.fontAwesomeIcon(name: .chartLine, style: .solid, textColor: .white, size: CGSize(width: 32, height: 32))
             tabBarItem.title = "Market"
         }
 
@@ -18,7 +18,7 @@ struct MarketSummariesSplitViewControllerBuilder {
     static func build() -> UIViewController {
         let dummyViewController = UIViewController()
         dummyViewController.title = "No market selected"
-        dummyViewController.view.backgroundColor = .white
+        dummyViewController.view.backgroundColor = .systemBackground
 
         let masterViewController = UINavigationController(rootViewController: MarketSummariesViewBuilder.build())
         let detailViewController = UINavigationController(rootViewController: dummyViewController)
